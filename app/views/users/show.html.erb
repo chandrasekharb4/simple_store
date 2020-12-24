@@ -1,0 +1,75 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @user.name %>
+</p>
+
+<p>
+  <b>Mobile no:</b>
+  <%= @user.mobile_no %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%= @user.email %>
+</p>
+
+<p>
+  <b>Crypted password:</b>
+  <%= @user.crypted_password %>
+</p>
+
+<p>
+  <b>Password salt:</b>
+  <%= @user.password_salt %>
+</p>
+
+<p>
+  <b>Persistence token:</b>
+  <%= @user.persistence_token %>
+</p>
+
+<p>
+  <b>Perishable token:</b>
+  <%= @user.perishable_token %>
+</p>
+
+<p>
+  <b>Password:</b>
+  <%= @user.password %>
+</p>
+
+<p>
+  <b>Password confirmation:</b>
+  <%= @user.password_confirmation %>
+</p>
+
+<p>
+  <b>Super admin:</b>
+  <%= @user.super_admin %>
+</p>
+
+<p>
+  <b>Employee:</b>
+  <%= @user.employee %>
+</p>
+
+<p>
+  <b>Employee code:</b>
+  <%= @user.employee_code %>
+</p>
+
+<p>
+  <b>User role:</b>
+  <%= @user.user_role %>
+</p>
+
+<p>
+  <b>Control room:</b>
+  <%= @user.control_room_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>

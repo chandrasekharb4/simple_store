@@ -1,0 +1,28 @@
+<div style="padding: 5px">
+  <div class="row">
+    <div class="col-sm-6"><%= get_index_text('Proposed Uses') %></div>
+    <div class="col-sm-6 text-right"><%= link_to 'New Proposed use', new_proposed_use_path, :class => 'btn btn-success', :style => 'color:white;background-color:#088351 !important' %></div>
+  </div>
+  <table class="table table-bordered">
+    <tr class="tr_style">
+      <th>Name</th>
+      <th>Code</th>
+      <th>Active</th>
+      <th></th>
+      <th></th>
+    </tr>
+
+    <% @proposed_uses.each do |proposed_use| %>
+      <tr>
+        <td><%= proposed_use.name %></td>
+        <td><%= proposed_use.code %></td>
+        <td><%= proposed_use.active %></td>
+        <td><%= link_to 'Edit', edit_proposed_use_path(proposed_use) %></td>
+        <td><%= link_to 'Destroy', proposed_use, method: :delete, data: {confirm: 'Are you sure?'} %></td>
+      </tr>
+    <% end %>
+  </table>
+
+  <br/>
+
+</div>

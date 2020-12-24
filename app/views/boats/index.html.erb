@@ -1,0 +1,72 @@
+<div style="padding: 5px">
+  <div class="row">
+    <div class="col-sm-6"><%= get_index_text('Boats') %></div>
+    <div class="col-sm-6 text-right"><%= link_to 'New Boat', new_boat_path, :class => 'btn btn-success', :style => 'color:white;background-color:#088351 !important' %></div>
+  </div>
+  <table class="table table-bordered">
+    <tr class="tr_style">
+      <th>Name</th>
+      <th>Control room</th>
+      <th>Name of the vessel</th>
+      <th>Registration number</th>
+      <th>Navigation route</th>
+      <th>Route permission number</th>
+      <th>Captain name</th>
+      <th>Trip duriation</th>
+      <th>Boat type</th>
+      <th>Engine type</th>
+      <th>Proposed use</th>
+      <th>Active</th>
+      <th>Permission file no</th>
+      <th>Status</th>
+      <th></th>
+      <th></th>
+      <% if current_user.unit_user %>
+        <th></th>
+      <% end %>
+    </tr>
+
+    <% @boats.each do |boat| %>
+      <tr>
+        <td><%= boat.name %></td>
+        <td><%= ControlPoint.find_by_id(boat.control_room_id).try(:name) %></td>
+        <td><%= boat.name_of_the_vessel %></td>
+        <td><%= boat.registration_number %></td>
+        <td><%= boat.navigation_route %></td>
+        <td><%= boat.route_permission_number %></td>
+        <td><%= boat.captain_name %></td>
+        <td><%= boat.trip_duriation %></td>
+        <td><%= boat.boat_type %></td>
+        <td><%= boat.engine_type %></td>
+        <td><%= boat.proposed_use %></td>
+        <td><%= boat.active %></td>
+        <td><%= boat.permission_file_no %></td>
+        <td><%= boat.status %></td>
+        <td><a href="http://track.tpdirect.in/tpms/dashboardnew/dashBoardLogin?code=GWMC" class="btn btn-xs btn-success" target="_blank" > Tracking </a></td>
+        <td><%= link_to 'Show', boat %> &nbsp;
+          <% if boat.status != "Accepted" %>
+            <%= link_to 'Edit', edit_boat_path(boat), :class => "btn btn-xs btn-link" %>
+          <% end %>
+        </td>
+
+        <% if current_user.unit_user %>
+          <td>
+
+            <% if boat.status == "Accepted" && !boat.trip_run %>
+              <a href="/boats/boatClearance?id=<%= boat.id %>" target="_blank" class="btn btn-xs btn-link">New Boat
+                Clearance </a>
+            <% end %>
+            <% if boat.status == "Accepted" && boat.trip_run %>
+              <a href="/boats/display_trip_details?boat_id=<%= boat.id %>" target="_blank" class="btn btn-xs btn-link">
+                Running Trip Details </a>
+              <a href="/boats/trip_end?boat_id=<%= boat.id %>" ,class="btn btn-xs btn-link"> Trip Complete </a>
+            <% end %>
+          </td>
+        <% end %>
+
+      </tr>
+    <% end %>
+  </table>
+  <br/>
+</div>
+

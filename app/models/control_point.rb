@@ -1,0 +1,2 @@
+class ControlPoint < ApplicationRecord
+end

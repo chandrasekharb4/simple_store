@@ -1,0 +1,28 @@
+<div style="padding: 5px">
+  <div class="row">
+    <div class="col-sm-6"><%= get_index_text('Trips') %></div>
+    <div class="col-sm-6 text-right">
+    </div>
+  </div>
+
+  <%= form_tag("/trip_clearances", :method => 'get', :remote => true) do %>
+    <div class="row">
+      <div class="col-sm-2"><%= text_field_tag 'departure_date', Date.today, :placeholder => 'Date', :class => 'form-control datepicker' %></div>
+      <div class="col-sm-2"> <%= select_tag("boat_id", options_for_select(@boats.collect {|u| [u.name, u.id]}, @search), :class => 'form-control livesearch', :prompt => 'Select Boat') %></div>
+      <div class="col-sm-2"><%= submit_tag('       Search     ', :class => 'form-control zl_round_button3', :style => 'background-color: #154662;color:#ffffff') %></div>
+    </div>
+  <% end %>
+  <br/>
+  <div id="all_trips_content"><%= render :partial => 'all_trips' %></div>
+</div>
+
+
+
+<script>
+
+    $('.datepicker').datepicker({
+        dateFormat: 'yy-mm-dd ',
+        autoclose: true
+    });
+
+</script>

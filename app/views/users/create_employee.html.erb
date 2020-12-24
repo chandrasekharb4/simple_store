@@ -1,0 +1,42 @@
+<div style="padding: 5px">
+  <div class="row">
+    <div class="col-sm-6"><%= get_index_text('New Employee') %></div>
+  </div>
+  <br/>
+  <%= form_tag("/users/update_employee", :method => 'POST', :multipart => true) do %>
+    <div class="row" style="margin: 0px">
+      <div class="col-sm-4">
+        <% if @user.present? %>
+          <%= hidden_field_tag :user_id, @user.id %>
+        <% end %>
+
+        <%= hidden_field_tag :control_room_id, current_user.control_room_id %>
+
+        <div class="form-group">
+          <%= label_tag('', 'Name', :class => 'label-tag-style', :style => "text-transform: capitalize;color:black") %>
+          <br/>
+          <%= text_field_tag "name", @user.present? && @user.name.present? ? @user.name : '', :placeholder => 'Name', :required => true, :class => 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= label_tag('', 'Email', :class => 'label-tag-style', :style => "text-transform: capitalize;color:black") %>
+          <br/>
+          <%= text_field_tag "email", @user.present? && @user.email.present? ? @user.email : '', :placeholder => 'Email', :required => true, :class => 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= label_tag('', 'Mobile Number', :class => 'label-tag-style', :style => "text-transform: capitalize;color:black") %>
+          <br/>
+          <%= text_field_tag "mobile_no", @user.present? && @user.mobile_no.present? ? @user.mobile_no : '', :placeholder => 'Mobile Number', :required => true, :class => 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= label_tag('', 'User Role', :class => 'label-tag-style', :style => "text-transform: capitalize;color:black") %>
+          <br/>
+          <%= select_tag("user_role", options_for_select(UserRole.all.collect {|u| [u.name, u.name]}, @user.present? && @user.user_role.present? ? @user.user_role : ''), :class => 'form-control', :prompt => 'Select User role', :required => true) %>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-12">
+      <span><%= submit_tag "save", :class => 'btn btn-success btn-md', :style => 'background-color:#088351;width:150px' %></span>
+    </div>
+  <% end %>
+  <br/>
+</div>

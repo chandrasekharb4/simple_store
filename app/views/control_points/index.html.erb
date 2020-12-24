@@ -1,0 +1,34 @@
+<div style="padding: 5px">
+  <div class="row">
+    <div class="col-sm-6"><%= get_index_text('Boating Points') %></div>
+    <div class="col-sm-6 text-right"><%= link_to 'New Boating Point', new_control_point_path, :class => 'btn btn-success', :style => 'color:white;background-color:#088351 !important' %></div>
+  </div>
+  <table class="table table-bordered">
+    <tr class="tr_style">
+      <th>Name</th>
+      <th>Location</th>
+      <th>District</th>
+      <th>Contact number</th>
+      <th>Email</th>
+      <th>Code</th>
+      <th>Image</th>
+      <th>Active</th>
+      <th></th>
+      <th></th>
+    </tr>
+    <% @control_points.each do |control_point| %>
+      <tr>
+        <td><%= control_point.name %></td>
+        <td><%= control_point.location %></td>
+        <td><%= control_point.district %></td>
+        <td><%= control_point.contact_number %></td>
+        <td><%= control_point.email %></td>
+        <td><%= control_point.code %></td>
+        <td><img src="<%= control_point.image %>" style="width: 100px"></td>
+        <td><%= control_point.active %></td>
+        <td><%= link_to 'Edit', edit_control_point_path(control_point) %></td>
+        <td><%= link_to 'Destroy', control_point, method: :delete, data: {confirm: 'Are you sure?'} %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>

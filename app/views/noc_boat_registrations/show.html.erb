@@ -1,0 +1,80 @@
+<div style="padding: 5px">
+  <div class="row">
+    <div class="col-sm-6"><%= get_index_text('Noc Registrations') %></div>
+    <div class="col-sm-6 text-right">
+
+      <% if !current_user.employee %>
+        <%= link_to 'Back', "/noc_boat_registrations", :class => 'btn btn-success', :style => 'color:white;background-color:#088351 !important' %>
+      <% else %>
+        <%= link_to 'Back', "/noc_boat_registrations/pending_noc_boat_registrations", :class => 'btn btn-success', :style => 'color:white;background-color:#088351 !important' %>
+      <% end %>
+
+    </div>
+  </div>
+
+
+  <table class="table table-bordered">
+    <tr>
+      <td>Owner Name &nbsp; : <b><%= @noc_boat_registration.owner_name %></b></td>
+      <td>Agency Name &nbsp; : <b><%= @noc_boat_registration.agency_name %></b></td>
+      <td>Email &nbsp; : <b><%= @noc_boat_registration.owner_email %></b></td>
+    </tr>
+
+    <tr>
+      <td>Mobile Number &nbsp; : <b><%= @noc_boat_registration.mobile_number %></b></td>
+      <td>Address &nbsp; : <b><%= @noc_boat_registration.adress %></b></td>
+      <td>File No &nbsp; : <b><%= @noc_boat_registration.file_no %></b></td>
+    </tr>
+
+    <tr>
+      <td>Boat Name &nbsp; : <b><%= @noc_boat_registration.boat_name %></b></td>
+      <td>Boat Type &nbsp; : <b><%= @noc_boat_registration.boat_type %></b></td>
+      <td>Engine Type &nbsp; : <b><%= @noc_boat_registration.engine_type %></b></td>
+    </tr>
+    <tr>
+      <td>Manufacturing Certificate number&nbsp; : <b><%= @noc_boat_registration.manufacturing_certificate_number %></b>
+      </td>
+      <td>Manufacturing Date&nbsp; : <b><%= @noc_boat_registration.manufacturing_date %></b></td>
+      <td>Applied Date &nbsp; : <b><%= @noc_boat_registration.applied_date %></b></td>
+    </tr>
+
+    <tr>
+      <td>Proposed Location&nbsp; : <b><%= @noc_boat_registration.proposed_location %></b></td>
+      <td>Proposed Use&nbsp; : <b><%= @noc_boat_registration.proposed_use %></b></td>
+      <td>Approved Date &nbsp; :
+        <b><%= @noc_boat_registration.approved_date.present? ? @noc_boat_registration.approved_date : "NA" %></b></td>
+    </tr>
+    <tr>
+      <td>Paid Amount&nbsp; : <b><%= @noc_boat_registration.paid_amount %></b></td>
+      <td>Tnr No&nbsp; : <b><%= @noc_boat_registration.tnr_no %></b></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Aadharcard&nbsp; : <b><a href="<%= @noc_boat_registration.aadharCard %>" target="_blank"> View</a></b></td>
+      <td>Manufacturing certificate No&nbsp; :
+        <a href="<%= @noc_boat_registration.manufacturing_certificate %>" target="_blank"> View</a></td>
+      <td></td>
+    </tr>
+
+  </table>
+
+
+  <% if current_user.user_role.eql?("HO") && @noc_boat_registration.application_status.eql?('Created') %>
+    <div class="row">
+      <div class="col-sm-8"></div>
+      <div class="col-sm-4">
+        <div class="col-sm-12" style="padding: 10px">
+          <div class="col-sm-6">
+            <a href="/noc_boat_registrations/accept_noc?id=<%= @noc_boat_registration.id %>" class="btn btn-success" style="width: 100%;min-height: 35px;font-weight: bold;font-size: 16px;color: white">
+              Accept</a></div>
+          <div class="col-sm-6">
+            <a href="/noc_boat_registrations/reject_noc?id=<%= @noc_boat_registration.id %>" class="btn btn-danger" style="width: 100%;min-height: 35px;font-weight: bold;font-size: 16px;color: white">
+              Reject </a></div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+
+</div>
+

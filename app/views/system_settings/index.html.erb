@@ -1,0 +1,22 @@
+<div style="padding: 5px">
+  <div class="row">
+    <div class="col-sm-6"><%= get_index_text('System Settings') %></div>
+    <div class="col-sm-6 text-right"><%= link_to 'New System setting', new_system_setting_path, :class => 'btn btn-success', :style => 'color:white;background-color:#088351 !important' %></div>
+  </div>
+  <table class="table table-bordered">
+    <tr class="tr_style">
+      <th>Key</th>
+      <th>Value</th>
+      <th></th>
+      <th></th>
+    </tr>
+    <% @system_settings.each do |system_setting| %>
+      <tr>
+        <td><%= system_setting.key %></td>
+        <td><%= system_setting.value %></td>
+        <td><%= link_to 'Edit', edit_system_setting_path(system_setting) %></td>
+        <td><%= link_to 'Destroy', system_setting, method: :delete, data: {confirm: 'Are you sure?'} %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>

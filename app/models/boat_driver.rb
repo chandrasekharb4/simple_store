@@ -1,0 +1,2 @@
+class BoatDriver < ApplicationRecord
+end

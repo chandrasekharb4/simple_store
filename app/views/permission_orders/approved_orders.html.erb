@@ -1,0 +1,37 @@
+<div style="padding: 5px">
+  <div class="row">
+    <div class="col-sm-6"><%= get_index_text('Approved Permission Orders') %></div>
+    <div class="col-sm-6 text-right">
+    </div>
+  </div>
+  <table class="table table-bordered">
+    <tr class="tr_style">
+      <th>File No</th>
+      <th>Control room location</th>
+      <th>Name of the vessel</th>
+      <th>Registration number</th>
+      <th>Owner of the vessel</th>
+      <th>Navigation route</th>
+      <th>Route permission number</th>
+      <th>Captain name</th>
+      <th>Captain license no</th>
+      <th></th>
+    </tr>
+
+    <% @permission_orders.each do |permission_order| %>
+      <tr>
+        <td><%= permission_order.file_no %></td>
+        <td><%= permission_order.control_room_location %></td>
+        <td><%= permission_order.name_of_the_vessel %></td>
+        <td><%= permission_order.registration_number %></td>
+        <td><%= permission_order.owner_of_the_vessel %></td>
+        <td><%= permission_order.navigation_route %></td>
+        <td><%= permission_order.route_permission_number %></td>
+        <td><%= permission_order.captain_name %></td>
+        <td><%= permission_order.captain_license_no %></td>
+        <td><%= link_to 'Show', permission_order %></td>
+      </tr>
+    <% end %>
+  </table>
+  <br/>
+</div>

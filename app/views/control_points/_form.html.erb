@@ -1,0 +1,64 @@
+
+  <%= form_for(@control_point, multipart: true) do |form|  %>
+  <% if @control_point.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@control_point.errors.count, "error") %> prohibited this control_point from being saved:</h2>
+
+      <ul>
+        <% @control_point.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="form-group">
+        <%= form.label :name, :class => 'label-tag-style', :style => "text-transform: capitalize;color:black" %><br/>
+        <%= form.text_field :name, :class => 'form-control', :placeholder => 'Name ', :required => true %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :location, :class => 'label-tag-style', :style => "text-transform: capitalize;color:black" %>
+        <br/>
+        <%= form.text_field :location, :class => 'form-control', :placeholder => 'location ', :required => true %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :district, :class => 'label-tag-style', :style => "text-transform: capitalize;color:black" %>
+        <br/>
+        <%= form.text_field :district, :class => 'form-control', :placeholder => 'District ', :required => true %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :contact_number, :class => 'label-tag-style', :style => "text-transform: capitalize;color:black" %>
+        <br/>
+        <%= form.text_field :contact_number, :class => 'form-control', :placeholder => 'Phone Number ', :required => true %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :email, :class => 'label-tag-style', :style => "text-transform: capitalize;color:black" %><br/>
+        <%= form.text_field :email, :class => 'form-control', :placeholder => 'email ', :required => true %>
+      </div>
+
+      <div class="field">
+        <%= form.label :code, :class => 'label-tag-style', :style => "text-transform: capitalize;color:black" %><br/>
+        <%= form.text_field :code, :class => 'form-control', :placeholder => 'code ', :required => true %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :image, :class => 'label-tag-style', :style => "text-transform: capitalize;color:black;font-weight:600;font-size:13px" %>
+        <br/>
+        <%= form.file_field :image, :accept=>"image/png, image/jpeg" %>
+      </div>
+
+      <div class="form-group">
+        <%= form.check_box :active %> <%= form.label :active, :class => 'label-tag-style', :style => "text-transform: capitalize;color:black" %>
+      </div>
+      <div class="actions">
+        <%= form.submit(:class => 'btn btn-success btn-md', :style => "background-color:#088351") %>
+      </div>
+    </div>
+  </div>
+<% end %>

@@ -1,0 +1,29 @@
+<%= form_for(@boat_driver) do |f| %>
+  <% if @boat_driver.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@boat_driver.errors.count, "error") %> prohibited this boat_driver from being saved:</h2>
+
+      <ul>
+      <% @boat_driver.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :boat_id %><br />
+    <%= f.number_field :boat_id %>
+  </div>
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :license_numner %><br />
+    <%= f.text_field :license_numner %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

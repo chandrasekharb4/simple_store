@@ -1,0 +1,31 @@
+<div style="padding: 5px">
+  <div class="row">
+    <div class="col-sm-6"><%= get_index_text('Trip Drivers') %></div>
+    <div class="col-sm-6 text-right"><%= link_to 'New Trip driver', new_trip_driver_path, :class => 'btn btn-success', :style => 'color:white;background-color:#088351 !important' %></div>
+  </div>
+
+<table class="table table-bordered">
+  <tr class="tr_style">
+    <th>Name</th>
+    <th>License number</th>
+    <th>Boat</th>
+    <th>Trip</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @trip_drivers.each do |trip_driver| %>
+  <tr>
+    <td><%= trip_driver.name %></td>
+    <td><%= trip_driver.license_number %></td>
+    <td><%= trip_driver.boat_id %></td>
+    <td><%= trip_driver.trip_id %></td>
+    <td><%= link_to 'Show', trip_driver %></td>
+    <td><%= link_to 'Edit', edit_trip_driver_path(trip_driver) %></td>
+    <td><%= link_to 'Destroy', trip_driver, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+</div>
+

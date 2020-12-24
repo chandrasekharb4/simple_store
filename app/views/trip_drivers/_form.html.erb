@@ -1,0 +1,41 @@
+<%= form_for(@trip_driver) do |f| %>
+  <% if @trip_driver.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@trip_driver.errors.count, "error") %> prohibited this trip_driver from being saved:</h2>
+
+      <ul>
+      <% @trip_driver.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+ 
+
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="form-group">
+        <%= f.label :name, :class => 'label-tag-style', :style => "text-transform: capitalize;color:black" %><br/>
+        <%= f.text_field :name, :class => 'form-control', :placeholder => 'key ', :required => true %>
+      </div>
+      <div class="form-group">
+        <%= f.label :license_number, :class => 'label-tag-style', :style => "text-transform: capitalize;color:black" %><br/>
+        <%= f.text_field :license_number, :class => 'form-control', :placeholder => 'Value ', :required => true %>
+      </div>
+      <div class="form-group">
+        <%= f.label :boat_id, :class => 'label-tag-style', :style => "text-transform: capitalize;color:black" %><br/>
+        <%= f.text_field :boat_id, :class => 'form-control', :placeholder => 'Value ', :required => true %>
+      </div>
+       <div class="form-group">
+        <%= f.label :trip_id, :class => 'label-tag-style', :style => "text-transform: capitalize;color:black" %><br/>
+        <%= f.text_field :trip_id, :class => 'form-control', :placeholder => 'Value ', :required => true %>
+      </div>
+      <div class="actions">
+        <%= f.submit(:class => 'btn btn-success btn-md', :style => "background-color:#088351") %>
+      </div>
+    </div>
+  </div>
+
+
+<% end %>

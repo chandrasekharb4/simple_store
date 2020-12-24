@@ -1,0 +1,77 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require_tree .
+ */
+
+@import "bootstrap";
+
+
+.head_style {
+  color: #088351;
+  font-size: 21px;
+  font-weight: 900;
+  margin: 12px;
+  text-transform: capitalize;
+}
+
+.tr_style {
+  background: linear-gradient(180deg, #044f81 0, #2c8ec1);
+  color: #ffffff !important;
+}
+
+.tr_style1{
+  background-color: #154662;
+  color: #ffffff;
+}
+
+.td_class {
+  border: 1px solid #ddd !important;
+  padding: 10px;
+}
+
+
+.td_class1 {
+  border: 1px solid #ddd;
+  padding: 10px;
+}
+.pages {
+  bottom: -1px;
+  list-style: none;
+  width: auto;
+  float: right;
+  margin-bottom: 2px;
+  padding-top: 3px;
+  line-height: 180%;
+}
+
+.pages li {
+  float: left;
+  padding-left: 0;
+  margin: 2px 0 2px 5px;
+}
+
+.pages li a {
+  background-color:  #384452;
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+  border-radius: 4px;
+  border: 1px solid  #384452;
+  display: inline-block;
+  cursor: pointer;
+  color: #ffffff;
+  font-family: Arial;
+  font-size: 10px;
+  font-weight: bold;
+  padding: 3px 6px;
+  text-decoration: none;
+  margin-left: 5px;
+}

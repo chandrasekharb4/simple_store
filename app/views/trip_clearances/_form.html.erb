@@ -1,0 +1,121 @@
+<%= form_for(@trip_clearance) do |f| %>
+  <% if @trip_clearance.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@trip_clearance.errors.count, "error") %> prohibited this trip_clearance from being saved:</h2>
+
+      <ul>
+      <% @trip_clearance.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :boat_id %><br />
+    <%= f.number_field :boat_id %>
+  </div>
+  <div class="field">
+    <%= f.label :control_room_id %><br />
+    <%= f.number_field :control_room_id %>
+  </div>
+  <div class="field">
+    <%= f.label :name_of_the_vessel %><br />
+    <%= f.text_field :name_of_the_vessel %>
+  </div>
+  <div class="field">
+    <%= f.label :registration_number %><br />
+    <%= f.text_field :registration_number %>
+  </div>
+  <div class="field">
+    <%= f.label :owner_of_the_vessel %><br />
+    <%= f.text_field :owner_of_the_vessel %>
+  </div>
+  <div class="field">
+    <%= f.label :owner_email %><br />
+    <%= f.text_field :owner_email %>
+  </div>
+  <div class="field">
+    <%= f.label :mobile_no %><br />
+    <%= f.text_field :mobile_no %>
+  </div>
+  <div class="field">
+    <%= f.label :navigation_route %><br />
+    <%= f.text_field :navigation_route %>
+  </div>
+  <div class="field">
+    <%= f.label :route_permission_number %><br />
+    <%= f.text_field :route_permission_number %>
+  </div>
+  <div class="field">
+    <%= f.label :captain_name %><br />
+    <%= f.text_field :captain_name %>
+  </div>
+  <div class="field">
+    <%= f.label :captain_license_no %><br />
+    <%= f.text_field :captain_license_no %>
+  </div>
+  <div class="field">
+    <%= f.label :created_by %><br />
+    <%= f.text_field :created_by %>
+  </div>
+  <div class="field">
+    <%= f.label :life_jackets %><br />
+    <%= f.text_field :life_jackets %>
+  </div>
+  <div class="field">
+    <%= f.label :fire_extinguishers %><br />
+    <%= f.text_field :fire_extinguishers %>
+  </div>
+  <div class="field">
+    <%= f.label :passenger_capacity %><br />
+    <%= f.number_field :passenger_capacity %>
+  </div>
+  <div class="field">
+    <%= f.label :life_rafts %><br />
+    <%= f.number_field :life_rafts %>
+  </div>
+  <div class="field">
+    <%= f.label :life_buoys %><br />
+    <%= f.number_field :life_buoys %>
+  </div>
+  <div class="field">
+    <%= f.label :trip_duriation %><br />
+    <%= f.number_field :trip_duriation %>
+  </div>
+  <div class="field">
+    <%= f.label :boat_type %><br />
+    <%= f.text_field :boat_type %>
+  </div>
+  <div class="field">
+    <%= f.label :engine_type %><br />
+    <%= f.text_field :engine_type %>
+  </div>
+  <div class="field">
+    <%= f.label :proposed_use %><br />
+    <%= f.text_field :proposed_use %>
+  </div>
+  <div class="field">
+    <%= f.label :is_current %><br />
+    <%= f.check_box :is_current %>
+  </div>
+  <div class="field">
+    <%= f.label :departure_date %><br />
+    <%= f.date_select :departure_date %>
+  </div>
+  <div class="field">
+    <%= f.label :wearing_life_jackets %><br />
+    <%= f.check_box :wearing_life_jackets %>
+  </div>
+  <div class="field">
+    <%= f.label :influence_of_alcohol %><br />
+    <%= f.check_box :influence_of_alcohol %>
+  </div>
+  <div class="field">
+    <%= f.label :trip_end %><br />
+    <%= f.check_box :trip_end %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

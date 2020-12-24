@@ -1,0 +1,81 @@
+<div style="padding: 5px">
+  <div class="row">
+    <div class="col-sm-6"><%= get_index_text('Boat Details') %></div>
+    <div class="col-sm-6 text-right">
+      <%= link_to 'Back', "/boats", :class => 'btn btn-success', :style => 'color:white;background-color:#088351 !important' %>
+    </div>
+  </div>
+
+  <table class="table table-bordered">
+    <tr>
+      <td>Name &nbsp; : <b><%= @boat.name %></b></td>
+      <td>Name of the vessel &nbsp; : <b><%= @boat.name_of_the_vessel %></b></td>
+      <td>Boat type &nbsp; : <b><%= @boat.boat_type %></b></td>
+    </tr>
+    <tr>
+      <td>Control room&nbsp; : <b> <%= ControlPoint.find_by_id(@boat.control_room_id).try(:name) %></b></td>
+      <td>Unit &nbsp; : <b> <%= Unit.find_by_id(@boat.unit_id).try(:name) %></b></td>
+      <td>Division &nbsp; : <b> <%= Division.find_by_id(@boat.division_id).try(:name) %></b></td>
+    </tr>
+    <tr>
+      <td>Owner of the vessel&nbsp; : <b> <%= @boat.owner_of_the_vessel %></b></td>
+      <td>Email &nbsp; : <b><%= @boat.owner_email %></b></td>
+      <td>Mobile No &nbsp; : <b><%= @boat.mobile_no %></b></td>
+    </tr>
+    <tr>
+      <td>Registration number &nbsp; : <b><%= @boat.registration_number %></b></td>
+      <td>Navigation route &nbsp; : <b><%= @boat.navigation_route %></b></td>
+      <td>Route permission number : <b> <%= @boat.route_permission_number %></b></td>
+    </tr>
+    <tr>
+      <td>Captain name &nbsp; : <b><%= @boat.captain_name %></b></td>
+      <td>Captain license No &nbsp; : <b><%= @boat.captain_license_no %></b></td>
+      <td>Permission file no : <b> <%= @boat.permission_file_no %></b></td>
+    </tr>
+    <tr>
+      <td>Engine type &nbsp; : <b><%= @boat.engine_type %></b></td>
+      <td>Proposed use : <b> <%= @boat.proposed_use %></b></td>
+      <td>Status &nbsp; : <b><%= @boat.active ? "ACTIVE" : "INACTIVE" %></b></td>
+    </tr>
+    <tr>
+      <td>Life jackets &nbsp; : <b><%= @boat.life_jackets %></b></td>
+      <td>Fire extinguishers &nbsp; : <b><%= @boat.fire_extinguishers %></b></td>
+      <td>Passenger capacity : <b> <%= @boat.passenger_capacity %></b></td>
+    </tr>
+    <tr>
+      <td>Life rafts &nbsp; : <b><%= @boat.life_rafts %></b></td>
+      <td>Life buoys &nbsp; : <b><%= @boat.life_buoys %></b></td>
+      <td>Trip duriation : <b> <%= @boat.trip_duriation %></b></td>
+    </tr>
+    <tr>
+      <td>Created by &nbsp; : <b><%= @boat.created_by %></b></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </table>
+
+
+
+
+  <% if current_user.unit_user %>
+    <div class="row">
+      <div class="col-sm-8"></div>
+      <div class="col-sm-4">
+        <div class="col-sm-12" style="padding: 10px">
+          <div class="col-sm-6">
+            <a href="/boats/boatActive?id=<%= @boat.id %>" class="btn btn-success" style="width: 100%;min-height: 35px;font-weight: bold;font-size: 16px;color: white">
+              Activate</a></div>
+          <div class="col-sm-6">
+            <a href="/boats/boatInActive?id=<%= @boat.id %>" class="btn btn-danger" style="width: 100%;min-height: 35px;font-weight: bold;font-size: 16px;color: white">
+              In Activate </a></div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+</div>
+
+
+
+
+

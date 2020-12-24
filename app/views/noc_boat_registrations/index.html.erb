@@ -1,0 +1,59 @@
+<div style="padding: 5px">
+  <div class="row">
+    <div class="col-sm-6"><%= get_index_text('Noc Registrations') %></div>
+    <div class="col-sm-6 text-right"><%= link_to 'New registration', "/noc_boat_registrations/pay_noc_payment", :class => 'btn btn-success', :style => 'color:white;background-color:#088351 !important' %></div>
+  </div>
+  <table class="table table-bordered">
+    <tr class="tr_style">
+      <th>Owner name</th>
+      <th>Agency name</th>
+      <th>Mobile number</th>
+      <th>Adress</th>
+      <th>Boat name</th>
+      <th>Boat type</th>
+      <th>Engine type</th>
+      <th>Manufacturing certificate number</th>
+      <th>Manufacturing date</th>
+      <th>Proposed location</th>
+      <th>Proposed use</th>
+      <th>File no</th>
+      <th>Application status</th>
+      <th>Paid amount</th>
+      <th>Tnr no</th>
+      <th></th>
+      <th></th>
+    </tr>
+
+    <% @noc_boat_registrations.each do |noc_boat_registration| %>
+      <tr>
+        <td><%= noc_boat_registration.owner_name %></td>
+        <td><%= noc_boat_registration.agency_name %></td>
+        <td><%= noc_boat_registration.mobile_number %></td>
+        <td><%= noc_boat_registration.adress %></td>
+        <td><%= noc_boat_registration.boat_name %></td>
+        <td><%= noc_boat_registration.boat_type %></td>
+        <td><%= noc_boat_registration.engine_type %></td>
+        <td><%= noc_boat_registration.manufacturing_certificate_number %></td>
+        <td><%= noc_boat_registration.manufacturing_date %></td>
+        <td><%= noc_boat_registration.proposed_location %></td>
+        <td><%= noc_boat_registration.proposed_use %></td>
+        <td><%= noc_boat_registration.file_no %></td>
+        <td><%= noc_boat_registration.application_status %></td>
+        <td><%= noc_boat_registration.paid_amount %></td>
+        <td><%= noc_boat_registration.tnr_no %></td>
+        <td><%= link_to 'Show', noc_boat_registration %></td>
+        <td>
+          <% if noc_boat_registration.application_status.eql?("Accepted") %>
+            <a href="/noc_boat_registrations/generateNoce?id=<%= noc_boat_registration.id %>" target="_blank" class="btn btn-link">
+              Noc Certificate</a>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+  <br/>
+</div>
+
+
+
+

@@ -1,0 +1,2 @@
+module TripClearancesHelper
+end

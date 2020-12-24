@@ -1,0 +1,552 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <title>Boating Operations Management System - AP Tourism</title>
+   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+      <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <%= csrf_meta_tags %>
+  <link href="/assets/bootstrap.min.css" rel="stylesheet">
+  <link href="/assets/carousel.css" rel="stylesheet">
+  <link href="/assets/style.css" rel="stylesheet">
+  <link href="/assets/jquerycssmenu.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto:300,400,500,700&display=swap"
+        rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.js" type="text/javascript"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js" type="text/javascript"></script>
+  <link href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto:300,400,500,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <div id="jquery-accordion-menu" class="jquery-accordion-menu">
+    <div class="jquery-accordion-menu-header">Header</div>
+    <ul>
+      <% if current_user.present? %>
+        <% if current_user.present? && current_user.super_admin %>
+
+          <li class="submenu <%= session[ApplicationHelper::SessionConstants::SELECTED_MENU_ITEM].eql?('/users/ho_dashBoard') ? 'active' : '' %>">
+            <a href="/users/ho_dashBoard1">
+              <span class="icon"><i class="fa fa-spinner"></i></span>
+              <span class="text">Dash Board</span>
+              <span class="arrow"></span>
+            </a>
+          </li>
+
+        <li class="<%= session[ApplicationHelper::SessionConstants::SELECTED_MENU_ITEM].eql?('/users') ? 'active' : '' %>">
+          <a href="/users"><i class="fa fa-home"></i>Users</a>
+        </li>
+        <li class="<%= session[ApplicationHelper::SessionConstants::SELECTED_MENU_ITEM].eql?('/control_points') ? 'active' : '' %>">
+          <a href="/control_points"><i class="fa fa-home"></i>Boating Points</a>
+        </li>
+        <li class="<%= session[ApplicationHelper::SessionConstants::SELECTED_MENU_ITEM].eql?('/boat_types') ? 'active' : '' %>">
+          <a href="/boat_types"><i class="fa fa-home"></i>Boat Types</a>
+        </li>
+        <li class="<%= session[ApplicationHelper::SessionConstants::SELECTED_MENU_ITEM].eql?('/engine_types') ? 'active' : '' %>">
+          <a href="/engine_types"><i class="fa fa-home"></i>Engine Types</a>
+        </li>
+        <li class="<%= session[ApplicationHelper::SessionConstants::SELECTED_MENU_ITEM].eql?('/proposed_uses') ? 'active' : '' %>">
+          <a href="/proposed_uses"><i class="fa fa-home"></i>Proposed Uses</a>
+        </li>
+        <li class="<%= session[ApplicationHelper::SessionConstants::SELECTED_MENU_ITEM].eql?('/file_sequences') ? 'active' : '' %>">
+          <a href="/file_sequences"><i class="fa fa-home"></i>File Sequences</a>
+        </li>
+        <li class="<%= session[ApplicationHelper::SessionConstants::SELECTED_MENU_ITEM].eql?('/user_roles') ? 'active' : '' %>">
+          <a href="/user_roles"><i class="fa fa-home"></i>User Roles</a>
+        </li>
+        <li class="<%= session[ApplicationHelper::SessionConstants::SELECTED_MENU_ITEM].eql?('/system_settings') ? 'active' : '' %>">
+          <a href="/system_settings"><i class="fa fa-home"></i>System Settings</a>
+        </li>
+
+
+
+          <li class="submenu <%= session[ApplicationHelper::SessionConstants::SELECTED_MENU_ITEM].eql?('noc_boat_registrations') ? 'active' : '' %>">
+            <a href="/noc_boat_registrations">
+              <span class="icon"><i class="fa fa-spinner"></i></span>
+              <span class="text">Noc Registrations</span>
+              <span class="arrow"></span>
+            </a>
+          </li>
+
+          <li class="submenu <%= session[ApplicationHelper::SessionConstants::SELECTED_MENU_ITEM].eql?('permission_orders') ? 'active' : '' %>">
+            <a href="/permission_orders">
+              <span class="icon"><i class="fa fa-spinner"></i></span>
+              <span class="text">Permission Orders</span>
+              <span class="arrow"></span>
+            </a>
+          </li>
+
+          <li class="submenu <%= session[ApplicationHelper::SessionConstants::SELECTED_MENU_ITEM].eql?('boats') ? 'active' : '' %>">
+            <a href="/boats">
+              <span class="icon"><i class="fa fa-spinner"></i></span>
+              <span class="text">Boats</span>
+              <span class="arrow"></span>
+            </a>
+          </li>
+
+          <li class="submenu <%= session[ApplicationHelper::SessionConstants::SELECTED_MENU_ITEM].eql?('Trips') ? 'active' : '' %>">
+            <a href="/trip_clearances">
+              <span class="icon"><i class="fa fa-spinner"></i></span>
+              <span class="text">Trips</span>
+              <span class="arrow"></span>
+            </a>
+          </li>
+          <li class="submenu <%= session[ApplicationHelper::SessionConstants::SELECTED_MENU_ITEM].eql?('divisions') ? 'active' : '' %>">
+            <a href="/divisions">
+              <span class="icon"><i class="fa fa-spinner"></i></span>
+              <span class="text">Divisions</span>
+              <span class="arrow"></span>
+            </a>
+          </li>
+          <li class="submenu <%= session[ApplicationHelper::SessionConstants::SELECTED_MENU_ITEM].eql?('units') ? 'active' : '' %>">
+            <a href="/units">
+              <span class="icon"><i class="fa fa-spinner"></i></span>
+              <span class="text">Units</span>
+              <span class="arrow"></span>
+            </a>
+          </li>
+
+          <li class="submenu <%= session[ApplicationHelper::SessionConstants::SELECTED_MENU_ITEM].eql?('') ? 'active' : '' %>">
+            <a href="#">
+              <span class="icon"><i class="fa fa-spinner"></i></span>
+              <span class="text">Footer </span>
+              <span class="arrow"></span>
+            </a>
+          </li>
+       <%end %>
+
+      <% if current_user.present? && !current_user.employee && !current_user.super_admin %>
+
+
+
+
+
+          <li class="submenu <%= session[ApplicationHelper::SessionConstants::SELECTED_MENU_ITEM].eql?('users/user_dashBoard') ? 'active' : '' %>">
+            <a href="/users/user_dashBoard">
+              <span class="icon"><i class="fa fa-spinner"></i></span>
+              <span class="text">DashBoard</span>
+              <span class="arrow"></span>
+            </a>
+          </li>
+
+          <li class="submenu <%= session[ApplicationHelper::SessionConstants::SELECTED_MENU_ITEM].eql?('noc_boat_registrations') ? 'active' : '' %>">
+            <a href="/noc_boat_registrations">
+              <span class="icon"><i class="fa fa-spinner"></i></span>
+              <span class="text">Noc Registrations</span>
+              <span class="arrow"></span>
+            </a>
+          </li>
+
+          <li class="submenu <%= session[ApplicationHelper::SessionConstants::SELECTED_MENU_ITEM].eql?('permission_orders') ? 'active' : '' %>">
+            <a href="/permission_orders">
+              <span class="icon"><i class="fa fa-spinner"></i></span>
+              <span class="text">Permission Orders</span>
+              <span class="arrow"></span>
+            </a>
+          </li>
+
+          <li class="submenu <%= session[ApplicationHelper::SessionConstants::SELECTED_MENU_ITEM].eql?('boats') ? 'active' : '' %>">
+            <a href="/boats">
+              <span class="icon"><i class="fa fa-spinner"></i></span>
+              <span class="text">Boats</span>
+              <span class="arrow"></span>
+            </a>
+          </li>
+
+          <li class="submenu <%= session[ApplicationHelper::SessionConstants::SELECTED_MENU_ITEM].eql?('Trips') ? 'active' : '' %>">
+            <a href="/trip_clearances">
+              <span class="icon"><i class="fa fa-spinner"></i></span>
+              <span class="text">Trips</span>
+              <span class="arrow"></span>
+            </a>
+          </li>
+
+
+          <li class="submenu <%= session[ApplicationHelper::SessionConstants::SELECTED_MENU_ITEM].eql?('payments') ? 'active' : '' %>">
+            <a href="/payments">
+              <span class="icon"><i class="fa fa-spinner"></i></span>
+              <span class="text">payments</span>
+              <span class="arrow"></span>
+            </a>
+          </li>
+        <%end %>
+
+
+
+
+
+
+        <% if current_user.present? && current_user.unit_user %>
+
+          <li class="submenu <%= session[ApplicationHelper::SessionConstants::SELECTED_MENU_ITEM].eql?('/users/unit_dashboard') ? 'active' : '' %>">
+            <a href="/users/unit_dashboard">
+              <span class="icon"><i class="fa fa-spinner"></i></span>
+              <span class="text">Dash Board</span>
+              <span class="arrow"></span>
+            </a>
+          </li>
+
+
+          <li class="submenu <%= session[ApplicationHelper::SessionConstants::SELECTED_MENU_ITEM].eql?('/users/noc_registrations') ? 'active' : '' %>">
+            <a href="/noc_boat_registrations/noc_registrations">
+              <span class="icon"><i class="fa fa-spinner"></i></span>
+              <span class="text">Noc Registrations</span>
+              <span class="arrow"></span>
+            </a>
+          </li>
+
+          <li class="submenu <%= session[ApplicationHelper::SessionConstants::SELECTED_MENU_ITEM].eql?('/users/per_orders') ? 'active' : '' %>">
+            <a href="/noc_boat_registrations/per_orders">
+              <span class="icon"><i class="fa fa-spinner"></i></span>
+              <span class="text">Permission Orders</span>
+              <span class="arrow"></span>
+            </a>
+          </li>
+
+          <li class="submenu <%= session[ApplicationHelper::SessionConstants::SELECTED_MENU_ITEM].eql?('boats') ? 'active' : '' %>">
+            <a href="/boats">
+              <span class="icon"><i class="fa fa-spinner"></i></span>
+              <span class="text">Boats</span>
+              <span class="arrow"></span>
+            </a>
+          </li>
+
+          <li class="submenu <%= session[ApplicationHelper::SessionConstants::SELECTED_MENU_ITEM].eql?('Trips') ? 'active' : '' %>">
+            <a href="/trip_clearances">
+              <span class="icon"><i class="fa fa-spinner"></i></span>
+              <span class="text">Trips</span>
+              <span class="arrow"></span>
+            </a>
+          </li>
+
+        <%end %>
+
+
+        <% if current_user.present? && current_user.unit_user && current_user.admin %>
+
+          <li class="submenu <%= session[ApplicationHelper::SessionConstants::SELECTED_MENU_ITEM].eql?('/users/employee_list') ? 'active' : '' %>">
+            <a href="/users/employee_list">
+              <span class="icon"><i class="fa fa-spinner"></i></span>
+              <span class="text">Employees</span>
+              <span class="arrow"></span>
+            </a>
+          </li>
+
+        <%end %>
+
+
+
+        <% if current_user.present? && current_user.employee && current_user.ho_user %>
+
+          <li class="submenu <%= session[ApplicationHelper::SessionConstants::SELECTED_MENU_ITEM].eql?('/users/ho_dashBoard') ? 'active' : '' %>">
+            <a href="/users/ho_dashBoard1">
+              <span class="icon"><i class="fa fa-spinner"></i></span>
+              <span class="text">Dash Board</span>
+              <span class="arrow"></span>
+            </a>
+          </li>
+
+          <li class="submenu <%= session[ApplicationHelper::SessionConstants::SELECTED_MENU_ITEM].eql?('pending_noc_boat_registrations') ? 'active' : '' %>">
+            <a href="/noc_boat_registrations/pending_noc_boat_registrations">
+              <span class="icon"><i class="fa fa-spinner"></i></span>
+              <span class="text">Pending Noc Registrations</span>
+              <span class="arrow"></span>
+            </a>
+          </li>
+          <li class="submenu <%= session[ApplicationHelper::SessionConstants::SELECTED_MENU_ITEM].eql?('approved_noc_boat_registrations') ? 'active' : '' %>">
+            <a href="/noc_boat_registrations/approved_noc_boat_registrations">
+              <span class="icon"><i class="fa fa-spinner"></i></span>
+              <span class="text">Approved Noc Registrations</span>
+              <span class="arrow"></span>
+            </a>
+          </li>
+          <li class="submenu <%= session[ApplicationHelper::SessionConstants::SELECTED_MENU_ITEM].eql?('rejected_noc_boat_registrations') ? 'active' : '' %>">
+            <a href="/noc_boat_registrations/rejected_noc_boat_registrations">
+              <span class="icon"><i class="fa fa-spinner"></i></span>
+              <span class="text">Rejected Noc Registrations</span>
+              <span class="arrow"></span>
+            </a>
+          </li>
+
+          <li class="submenu <%= session[ApplicationHelper::SessionConstants::SELECTED_MENU_ITEM].eql?('permission_orders') ? 'active' : '' %>">
+            <a href="/permission_orders/pending_orders">
+              <span class="icon"><i class="fa fa-spinner"></i></span>
+              <span class="text">Pending permission order</span>
+              <span class="arrow"></span>
+            </a>
+          </li>
+
+          <li class="submenu <%= session[ApplicationHelper::SessionConstants::SELECTED_MENU_ITEM].eql?('approved_orders') ? 'active' : '' %>">
+            <a href="/permission_orders/approved_orders">
+              <span class="icon"><i class="fa fa-spinner"></i></span>
+              <span class="text">Approved permission order </span>
+              <span class="arrow"></span>
+            </a>
+          </li>
+
+          <li class="submenu <%= session[ApplicationHelper::SessionConstants::SELECTED_MENU_ITEM].eql?('rejected_orders') ? 'active' : '' %>">
+            <a href="/permission_orders/rejected_orders">
+              <span class="icon"><i class="fa fa-spinner"></i></span>
+              <span class="text">Rejected permission order</span>
+              <span class="arrow"></span>
+            </a>
+          </li>
+
+
+          <li class="submenu <%= session[ApplicationHelper::SessionConstants::SELECTED_MENU_ITEM].eql?('noc_boat_registrations') ? 'active' : '' %>">
+            <a href="/noc_boat_registrations">
+              <span class="icon"><i class="fa fa-spinner"></i></span>
+              <span class="text">Noc Registrations</span>
+              <span class="arrow"></span>
+            </a>
+          </li>
+
+          <li class="submenu <%= session[ApplicationHelper::SessionConstants::SELECTED_MENU_ITEM].eql?('permission_orders') ? 'active' : '' %>">
+            <a href="/permission_orders">
+              <span class="icon"><i class="fa fa-spinner"></i></span>
+              <span class="text">Permission Orders</span>
+              <span class="arrow"></span>
+            </a>
+          </li>
+
+          <li class="submenu <%= session[ApplicationHelper::SessionConstants::SELECTED_MENU_ITEM].eql?('boats') ? 'active' : '' %>">
+            <a href="/boats">
+              <span class="icon"><i class="fa fa-spinner"></i></span>
+              <span class="text">Boats</span>
+              <span class="arrow"></span>
+            </a>
+          </li>
+
+
+          <li class="submenu <%= session[ApplicationHelper::SessionConstants::SELECTED_MENU_ITEM].eql?('Trips') ? 'active' : '' %>">
+            <a href="/trip_clearances">
+              <span class="icon"><i class="fa fa-spinner"></i></span>
+              <span class="text">Trips</span>
+              <span class="arrow"></span>
+            </a>
+          </li>
+
+
+
+        <%end %>
+
+
+
+
+
+
+
+      <% end %>
+
+      <!--      <li class="<%#= session[ApplicationHelper::SessionConstants::SELECTED_MENU_ITEM].eql?('noc_boat_registrations') ? 'active' : '' %>">-->
+      <!--        <a href="/noc_boat_registrations">-->
+      <!--          <i class="fa fa-home"></i>Home-->
+      <!--        </a>-->
+      <!--      </li>-->
+
+
+
+    </ul>
+    <div class="jquery-accordion-menu-footer">Footer</div>
+  </div>
+</div>
+<header>
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <div class="container-fluid">
+      <i class="fa fa-bars" onclick="openNav()"
+         style="font-size:26px;font-weight:300;color: #fff;cursor: pointer;"></i>
+      <img src="/assets/ap-govt-logo.png" style="height:48px;margin-left:20px;">
+      <a class="navbar-brand" href="#"><img src="/assets/logo.png" style="height:50px;margin-left:20px;"></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+              aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+        </ul>
+        <div class="dropdown" style="float: right;">
+          <% if current_user.present? && current_user.email.present? %>
+            <i class="fa fa-user-circle-o c-w" class="dropdown-toggle" data-toggle="dropdown"
+               style="font-size: 24px;cursor: pointer;"></i>
+            <div class="dropdown-menu" style="left:inherit;right:0;">
+              <a class="dropdown-item" href="#"><%= current_user.email %></a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="/logout">Logout</a>
+            </div>
+          <% else %>
+            <a href="/login" style="color:#fff;cursor: pointer;font-size:13px;margin-right:15px;"><i
+              style="font-size:15px;margin-right:5px;" class="fa fa-unlock-alt"></i> LOGIN</a>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<main role="main" style="margin-top:28px;margin-bottom:80px;">
+  <div class="container">
+  </div>
+  <div class="container-fluid marketing" style="margin-top: 40px;">
+    <%= yield %>
+  </div>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <p class="float-right" style="margin-bottom: 0px;"><a href="#" style="color: #fff;"><i
+      class="fa fa-arrow-up"></i></a></p>
+    <p style="color: #fff;margin-bottom: 0px;">&copy; 2020 Boating Operations Management System.</p>
+  </div>
+</footer>
+
+<!-- Bootstrap core JavaScript
+  ================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="/assets/jquery-3.2.1.slim.min.js"></script>
+<script src="/assets/popper.min.js"></script>
+<script src="/assets/bootstrap.min.js"></script>
+<!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+<script src="/assets/holder.min.js"></script>
+
+
+<!--<script>-->
+<!--    $('.datepicker').datepicker({-->
+<!--        dateFormat: 'yy-mm-dd ',-->
+<!--        autoclose: true,-->
+<!--        changeYear: true,-->
+<!--        changeMonth: true,-->
+<!--    });-->
+<!--</script>-->
+
+<script>
+
+
+    function openNav() {
+        document.getElementById("mySidenav").style.width = "250px";
+    }
+
+    function closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+    }
+</script>
+
+<script>
+    $(document).ready(function () {
+        jQuery(document).ready(function () {
+            jQuery("#jquery-accordion-menu").jqueryAccordionMenu();
+            jQuery(".colors a").click(function () {
+                if ($(this).attr("class") != "default") {
+                    $("#jquery-accordion-menu").removeClass();
+                    $("#jquery-accordion-menu").addClass("jquery-accordion-menu").addClass($(this).attr("class"));
+                } else {
+                    $("#jquery-accordion-menu").removeClass();
+                    $("#jquery-accordion-menu").addClass("jquery-accordion-menu");
+                }
+            });
+        });
+    });
+
+
+</script>
+
+<script>
+    (function ($, window, document, undefined) {
+        var pluginName = "jqueryAccordionMenu";
+        var defaults = {
+            speed: 300,
+            showDelay: 0,
+            hideDelay: 0,
+            singleOpen: true,
+            clickEffect: true
+        };
+
+        function Plugin(element, options) {
+            this.element = element;
+            this.settings = $.extend({}, defaults, options);
+            this._defaults = defaults;
+            this._name = pluginName;
+            this.init()
+        };
+        $.extend(Plugin.prototype, {
+            init: function () {
+                this.openSubmenu();
+                this.submenuIndicators();
+                if (defaults.clickEffect) {
+                    this.addClickEffect()
+                }
+            },
+            openSubmenu: function () {
+                $(this.element).children("ul").find("li").bind("click touchstart", function (e) {
+                    e.stopPropagation();
+                    e.preventDefault();
+                    if ($(this).children(".submenu").length > 0) {
+                        if ($(this).children(".submenu").css("display") == "none") {
+                            $(this).children(".submenu").delay(defaults.showDelay).slideDown(defaults.speed);
+                            $(this).children(".submenu").siblings("a").addClass("submenu-indicator-minus");
+                            if (defaults.singleOpen) {
+                                $(this).siblings().children(".submenu").slideUp(defaults.speed);
+                                $(this).siblings().children(".submenu").siblings("a").removeClass("submenu-indicator-minus")
+                            }
+                            return false
+                        } else {
+                            $(this).children(".submenu").delay(defaults.hideDelay).slideUp(defaults.speed)
+                        }
+                        if ($(this).children(".submenu").siblings("a").hasClass("submenu-indicator-minus")) {
+                            $(this).children(".submenu").siblings("a").removeClass("submenu-indicator-minus")
+                        }
+                    }
+                    window.location.href = $(this).children("a").attr("href")
+                })
+            },
+            submenuIndicators: function () {
+                if ($(this.element).find(".submenu").length > 0) {
+                    $(this.element).find(".submenu").siblings("a").append("<span class='submenu-indicator'>+</span>")
+                }
+            },
+            addClickEffect: function () {
+                var ink, d, x, y;
+                $(this.element).find("a").bind("click touchstart", function (e) {
+                    $(".ink").remove();
+                    if ($(this).children(".ink").length === 0) {
+                        $(this).prepend("<span class='ink'></span>")
+                    }
+                    ink = $(this).find(".ink");
+                    ink.removeClass("animate-ink");
+                    if (!ink.height() && !ink.width()) {
+                        d = Math.max($(this).outerWidth(), $(this).outerHeight());
+                        ink.css({
+                            height: d,
+                            width: d
+                        })
+                    }
+                    x = e.pageX - $(this).offset().left - ink.width() / 2;
+                    y = e.pageY - $(this).offset().top - ink.height() / 2;
+                    ink.css({
+                        top: y + 'px',
+                        left: x + 'px'
+                    }).addClass("animate-ink")
+                })
+            }
+        });
+        $.fn[pluginName] = function (options) {
+            this.each(function () {
+                if (!$.data(this, "plugin_" + pluginName)) {
+                    $.data(this, "plugin_" + pluginName, new Plugin(this, options))
+                }
+            });
+            return this
+        }
+    })(jQuery, window, document);
+</script>
+</body>
+
+</html>

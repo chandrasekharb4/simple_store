@@ -1,0 +1,2 @@
+class ProposedUse < ApplicationRecord
+end

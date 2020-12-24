@@ -1,0 +1,70 @@
+<%= form_for(@user) do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+        <% @user.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="form-group">
+        <%= f.label :name, :class => 'label-tag-style', :style => "text-transform: capitalize;color:black" %><br/>
+        <%= f.text_field :name, :class => 'form-control', :placeholder => 'Name ', :required => true %>
+      </div>
+      <div class="form-group">
+        <%= f.label :mobile_no, :class => 'label-tag-style', :style => "text-transform: capitalize;color:black" %><br/>
+        <%= f.text_field :mobile_no, :class => 'form-control', :placeholder => 'Mobile No ', :required => true %>
+      </div>
+      <div class="form-group">
+        <%= f.label :email, :class => 'label-tag-style', :style => "text-transform: capitalize;color:black" %><br/>
+        <%= f.text_field :email, :class => 'form-control', :placeholder => 'Email', :required => true %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :password, :class => 'label-tag-style', :style => "text-transform: capitalize;color:black" %><br/>
+        <%= f.text_field :password, :class => 'form-control', :placeholder => 'password', :required => true %>
+      </div>
+      <div class="form-group">
+        <%= f.label :password_confirmation, :class => 'label-tag-style', :style => "text-transform: capitalize;color:black" %>
+        <br/>
+        <%= f.text_field :password_confirmation, :class => 'form-control', :placeholder => 'password Confirmation', :required => true %>
+      </div>
+
+      <div class="field">
+        <%= f.label :employee_code, :class => 'label-tag-style', :style => "text-transform: capitalize;color:black" %>
+        <br/>
+        <%= f.text_field :employee_code, :class => 'form-control', :placeholder => 'Employee Code', :required => true %>
+      </div>
+      <div class="field">
+        <%= f.label :user_role, :class => 'label-tag-style', :style => "text-transform: capitalize;color:black" %><br/>
+        <%= f.select(:user_role, options_for_select(UserRole.where('active=?', true).collect {|u| [u.name, u.name]}, @user.user_role), {:prompt => 'Select  User Role '}, :class => 'form-control livesearch',) %>
+      </div>
+      <div class="field">
+        <%= f.label :control_room_id, :class => 'label-tag-style', :style => "text-transform: capitalize;color:black" %>
+        <br/>
+        <%= f.select(:control_room_id, options_for_select(ControlPoint.where('active=?', true).collect {|u| [u.name, u.id]}, @user.control_room_id), {:prompt => 'Select Control Room '}, :class => 'form-control livesearch',) %>
+      </div>
+      <div class="form-group">
+        <%= f.check_box :super_admin %> &nbsp;&nbsp; <%= f.label :super_admin, :class => 'label-tag-style', :style => "text-transform: capitalize;color:black" %>
+      </div>
+      <div class="form-group">
+        <%= f.check_box :ho_user %> &nbsp;&nbsp; <%= f.label :ho_user, :class => 'label-tag-style', :style => "text-transform: capitalize;color:black" %>
+      </div>
+      <div class="form-group">
+        <%= f.check_box :unit_user %> &nbsp;&nbsp; <%= f.label :unit_user, :class => 'label-tag-style', :style => "text-transform: capitalize;color:black" %>
+      </div>
+      <div class="field">
+        <%= f.check_box :employee %> &nbsp;&nbsp;  <%= f.label :employee, :class => 'label-tag-style', :style => "text-transform: capitalize;color:black" %>
+        <br/>
+      </div>
+      <div class="actions">
+        <%= f.submit(:class => 'btn btn-success btn-md', :style => "background-color:#088351") %>
+      </div>
+    </div>
+  </div>
+<% end %>

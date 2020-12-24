@@ -1,0 +1,2 @@
+class PermissionOrder < ApplicationRecord
+end

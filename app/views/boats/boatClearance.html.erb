@@ -1,0 +1,299 @@
+<div style="padding: 5px" class="container">
+  <div class="row">
+    <div class="col-sm-6"><%= get_index_text('Boat Clearance') %></div>
+    <div class="col-sm-6 text-right"><%= link_to 'Back', boats_path, :class => 'btn btn-success', :style => 'color:white;background-color:#088351 !important' %></div>
+  </div>
+  <%= form_tag("/boats/updateBoatClearance", :method => 'POST', :multipart => true) do %>
+    <% if @boat.present? %>
+      <%= hidden_field_tag :boat_id, @boat.id %>
+      <%= hidden_field_tag :control_room_id, @boat.control_room_id %>
+      <%= hidden_field_tag :departure_date, Date.today %>
+    <% end %>
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="form-group">
+          <%= label_tag('', 'Name Of The Vessel', :class => 'label-tag-style', :style => "text-transform: capitalize;color:black") %>
+          <br/>
+          <%= text_field_tag "name_of_the_vessel", @boat.present? && @boat.name_of_the_vessel.present? ? @boat.name_of_the_vessel : '', :placeholder => 'Name Of The Vessel', :required => true, :class => 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= label_tag('', 'Registration Number', :class => 'label-tag-style', :style => "text-transform: capitalize;color:black") %>
+          <br/>
+          <%= text_field_tag "registration_number", @boat.present? && @boat.registration_number.present? ? @boat.registration_number : '', :placeholder => 'Registration Number', :required => true, :class => 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= label_tag('', 'Captain Name', :class => 'label-tag-style', :style => "text-transform: capitalize;color:black") %>
+          <br/>
+          <%= text_field_tag "captain_name", @boat.present? && @boat.captain_name.present? ? @boat.captain_name : '', :placeholder => 'Captain Name', :required => true, :class => 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= label_tag('', 'Boat Type', :class => 'label-tag-style', :style => "text-transform: capitalize;color:black") %>
+          <br/>
+          <%= select_tag("boat_type", options_for_select(BoatType.all.collect {|u| [u.name, u.name]}, @boat.present? && @boat.boat_type.present? ? @boat.boat_type : ''), :class => 'form-control', :prompt => 'Select Boat Type', :required => true) %>
+        </div>
+        <div class="form-group">
+          <%= label_tag('', 'Life Jackets (NOS)', :class => 'label-tag-style', :style => "text-transform: capitalize;color:black") %>
+          <br/>
+          <%= number_field_tag "life_jackets", @boat.present? && @boat.life_jackets.present? ? @boat.life_jackets : '', :placeholder => 'Life Jackets', :required => true, :class => 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= label_tag('', 'Life Rafts (NOS)', :class => 'label-tag-style', :style => "text-transform: capitalize;color:black") %>
+          <br/>
+          <%= number_field_tag "life_rafts", @boat.present? && @boat.life_rafts.present? ? @boat.life_rafts : '', :placeholder => 'Life Rafts', :required => true, :class => 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= label_tag('', 'Trip Duriation (Minutes)', :class => 'label-tag-style', :style => "text-transform: capitalize;color:black") %>
+          <br/>
+          <%= number_field_tag "trip_duriation", @boat.present? && @boat.trip_duriation.present? ? @boat.trip_duriation : '', :placeholder => 'Trip Duriation ', :required => true, :class => 'form-control' %>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="form-group">
+          <%= label_tag('', 'Owner Of The Vessel', :class => 'label-tag-style', :style => "text-transform: capitalize;color:black") %>
+          <br/>
+          <%= text_field_tag "owner_of_the_vessel", @boat.present? && @boat.owner_of_the_vessel.present? ? @boat.owner_of_the_vessel : '', :placeholder => 'Owner Of The Vessel', :required => true, :class => 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= label_tag('', 'Navigation Route', :class => 'label-tag-style', :style => "text-transform: capitalize;color:black") %>
+          <br/>
+          <%= text_field_tag "navigation_route", @boat.present? && @boat.navigation_route.present? ? @boat.navigation_route : '', :placeholder => 'Navigation Route', :required => true, :class => 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= label_tag('', 'Captain License No', :class => 'label-tag-style', :style => "text-transform: capitalize;color:black") %>
+          <br/>
+          <%= text_field_tag "captain_license_no", @boat.present? && @boat.captain_license_no.present? ? @boat.captain_license_no : '', :placeholder => 'Captain License No', :required => true, :class => 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= label_tag('', 'Engine Type', :class => 'label-tag-style', :style => "text-transform: capitalize;color:black") %>
+          <br/>
+          <%= select_tag("engine_type", options_for_select(EngineType.all.collect {|u| [u.name, u.name]}, @boat.present? && @boat.engine_type.present? ? @boat.engine_type : ''), :class => 'form-control', :prompt => 'Select Engine Type', :required => true) %>
+        </div>
+        <div class="form-group">
+          <%= label_tag('', 'Fire Extinguishers (NOS)', :class => 'label-tag-style', :style => "text-transform: capitalize;color:black") %>
+          <br/>
+          <%= number_field_tag "fire_extinguishers", @boat.present? && @boat.fire_extinguishers.present? ? @boat.fire_extinguishers : '', :placeholder => 'Fire Extinguishers ', :required => true, :class => 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= label_tag('', 'Life Buoys (NOS)', :class => 'label-tag-style', :style => "text-transform: capitalize;color:black") %>
+          <br/>
+          <%= number_field_tag "life_buoys", @boat.present? && @boat.life_buoys.present? ? @boat.life_buoys : '', :placeholder => 'Life Buoys', :required => true, :class => 'form-control' %>
+        </div>
+
+
+
+      </div>
+      <div class="col-sm-4">
+        <div class="form-group">
+          <%= label_tag('', 'Owner Email', :class => 'label-tag-style', :style => "text-transform: capitalize;color:black") %>
+          <br/>
+          <%= text_field_tag "owner_email", @boat.present? && @boat.owner_email.present? ? @boat.owner_email : '', :placeholder => 'Email', :required => true, :class => 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= label_tag('', 'Route Permission Number', :class => 'label-tag-style', :style => "text-transform: capitalize;color:black") %>
+          <br/>
+          <%= text_field_tag "route_permission_number", @boat.present? && @boat.route_permission_number.present? ? @boat.route_permission_number : '', :placeholder => 'Route Permission Number', :required => true, :class => 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= label_tag('', 'Owner Mobile No', :class => 'label-tag-style', :style => "text-transform: capitalize;color:black") %>
+          <br/>
+          <%= text_field_tag "mobile_no", @boat.present? && @boat.mobile_no.present? ? @boat.mobile_no : '', :placeholder => 'Mobile No', :required => true, :class => 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= label_tag('', 'Proposed Use', :class => 'label-tag-style', :style => "text-transform: capitalize;color:black") %>
+          <br/>
+          <%= select_tag("proposed_use", options_for_select(ProposedUse.all.collect {|u| [u.name, u.name]}, @boat.present? && @boat.proposed_use.present? ? @boat.proposed_use : ''), :class => 'form-control', :prompt => 'Select Proposed Use', :required => true) %>
+        </div>
+        <div class="form-group">
+          <%= label_tag('', 'Boat Capacity (NOS)', :class => 'label-tag-style', :style => "text-transform: capitalize;color:black") %>
+          <br/>
+          <%= number_field_tag "passenger_capacity", @boat.present? && @boat.passenger_capacity.present? ? @boat.passenger_capacity : '', :placeholder => 'Boat Capacity', :required => true, :class => 'form-control' %>
+        </div>
+
+        <div class="form-group">
+          <%= label_tag('', 'Passenger Count (NOS)', :class => 'label-tag-style', :style => "text-transform: capitalize;color:black") %>
+          <br/>
+          <%= number_field_tag "passenger_count", '', :placeholder => 'Passenger Count ', :required => true, :class => 'form-control' %>
+        </div>
+
+      </div>
+
+      <div class="col-sm-12"><%= get_index_text('Vessel and Crew Related Checklist') %></div>
+
+      <div class="col-sm-12">
+
+        <div class="form-group row">
+          <span class="col-sm-7" style="padding-top: 7px"><%= label_tag('', '1. Vessel is registered with the Andhra Pradesh Maritime Board', :class => 'label-tag-style', :style => "text-transform: capitalize;color:black") %></span>
+          <span class="col-sm-2">
+               <%= select_tag("registered_with_aptdc", options_for_select(["YES", "NO", "NA"], ''), :class => 'form-control', :prompt => 'Select Any One', :required => true) %>
+            </span>
+        </div>
+        <div class="form-group row">
+          <span class="col-sm-7" style="padding-top: 7px"><%= label_tag('', '2. Vessel has the requisite route permissions', :class => 'label-tag-style', :style => "text-transform: capitalize;color:black") %></span>
+          <span class="col-sm-2">
+               <%= select_tag("has_route_permissions", options_for_select(["YES", "NO", "NA"], ''), :class => 'form-control', :prompt => 'Select Any One', :required => true) %>
+            </span>
+        </div>
+        <div class="form-group row">
+          <span class="col-sm-7" style="padding-top: 7px"><%= label_tag('', '3. Vessel prominently displays the capacity of the vessel (Not Applicable for small vessels)', :class => 'label-tag-style', :style => "text-transform: capitalize;color:black") %></span>
+          <span class="col-sm-2">
+               <%= select_tag("has_prominently_displays_the_capacity", options_for_select(["YES", "NO", "NA"], ''), :class => 'form-control', :prompt => 'Select Any One', :required => true) %>
+            </span>
+        </div>
+        <div class="form-group row">
+          <span class="col-sm-7" style="padding-top: 7px"><%= label_tag('', '4. Vessel has adequate lifesaving equipment', :class => 'label-tag-style', :style => "text-transform: capitalize;color:black") %></span>
+          <span class="col-sm-2">
+               <%= select_tag("has_lifesaving_equipment", options_for_select(["YES", "NO", "NA"], ''), :class => 'form-control', :prompt => 'Select Any One', :required => true) %>
+            </span>
+        </div>
+
+        <div class="form-group row">
+          <span class="col-sm-7" style="padding-top: 7px"><%= label_tag('', '5. Vessel has adequate firefighting equipment (Not Applicable for small vessels)', :class => 'label-tag-style', :style => "text-transform: capitalize;color:black") %></span>
+          <span class="col-sm-2">
+               <%= select_tag("has_adequate_firefighting_equipment", options_for_select(["YES", "NO", "NA"], ''), :class => 'form-control', :prompt => 'Select Any One', :required => true) %>
+            </span>
+        </div>
+
+        <div class="form-group row">
+          <span class="col-sm-7" style="padding-top: 7px"><%= label_tag('', '6. Vessel does not have any major damage', :class => 'label-tag-style', :style => "text-transform: capitalize;color:black") %></span>
+          <span class="col-sm-2">
+               <%= select_tag("does_not_have_any_major_damage", options_for_select(["YES", "NO", "NA"], ''), :class => 'form-control', :prompt => 'Select Any One', :required => true) %>
+            </span>
+        </div>
+
+        <div class="form-group row">
+          <span class="col-sm-7" style="padding-top: 7px"><%= label_tag('', '7. Vessel has the Details of the crew displayed in the cabin (Not Applicable for small vessels)', :class => 'label-tag-style', :style => "text-transform: capitalize;color:black") %></span>
+          <span class="col-sm-2">
+               <%= select_tag("has_crew_displayed", options_for_select(["YES", "NO", "NA"], ''), :class => 'form-control', :prompt => 'Select Any One', :required => true) %>
+            </span>
+        </div>
+
+        <div class="form-group row">
+          <span class="col-sm-7" style="padding-top: 7px"><%= label_tag('', '8. Boat driver has the requisite license and is registered', :class => 'label-tag-style', :style => "text-transform: capitalize;color:black") %></span>
+          <span class="col-sm-2">
+               <%= select_tag("driver_has_the_requisite_license_and_is_registered", options_for_select(["YES", "NO", "NA"], ''), :class => 'form-control', :prompt => 'Select Any One', :required => true) %>
+            </span>
+        </div>
+
+
+        <div class="form-group row">
+          <span class="col-sm-7" style="padding-top: 7px"><%= label_tag('', '9. Boat crew have the requisite licenses and are registered', :class => 'label-tag-style', :style => "text-transform: capitalize;color:black") %></span>
+          <span class="col-sm-2">
+               <%= select_tag("crew_have_the_requisite_licenses_and_are_registered", options_for_select(["YES", "NO", "NA"], ''), :class => 'form-control', :prompt => 'Select Any One', :required => true) %>
+            </span>
+        </div>
+
+        <div class="form-group row">
+          <span class="col-sm-7" style="padding-top: 7px"><%= label_tag('', '10. The Boat driver and the crew have their identity cards / badges  prominently displayed', :class => 'label-tag-style', :style => "text-transform: capitalize;color:black") %></span>
+          <span class="col-sm-2">
+               <%= select_tag("boat_driver_and_the_crew_have_their_identity_cards_badges", options_for_select(["YES", "NO", "NA"], ''), :class => 'form-control', :prompt => 'Select Any One', :required => true) %>
+            </span>
+        </div>
+
+        <div class="form-group row">
+          <span class="col-sm-7" style="padding-top: 7px"><%= label_tag('', '11. The crew is fit and healthy (not inebriated) to manoeuvre the vessel', :class => 'label-tag-style', :style => "text-transform: capitalize;color:black") %></span>
+          <span class="col-sm-2">
+               <%= select_tag("crew_is_fit_and_healthy_not", options_for_select(["YES", "NO", "NA"], ''), :class => 'form-control', :prompt => 'Select Any One', :required => true) %>
+            </span>
+        </div>
+
+        <div class="form-group row">
+          <span class="col-sm-7" style="padding-top: 7px"><%= label_tag('', '12. The Crew Are Not Under The Influence Of Alcohol', :class => 'label-tag-style', :style => "text-transform: capitalize;color:black") %></span>
+          <span class="col-sm-2">
+               <%= select_tag("influence_of_alcohol_all", options_for_select(["YES", "NO", "NA"], ''), :class => 'form-control', :prompt => 'Select Any One', :required => true) %>
+            </span>
+        </div>
+
+
+
+      </div>
+
+      <div class="col-sm-12"><%= get_index_text('Passenger Related Checklist') %></div>
+      <div class="col-sm-12">
+
+        <div class="form-group row">
+          <span class="col-sm-7" style="padding-top: 7px"><%= label_tag('', '1. The boat is not overloaded', :class => 'label-tag-style', :style => "text-transform: capitalize;color:black") %></span>
+          <span class="col-sm-2">
+               <%= select_tag("overloaded", options_for_select(["YES", "NO", "NA"], ''), :class => 'form-control', :prompt => 'Select Any One', :required => true) %>
+            </span>
+        </div>
+
+        <div class="form-group row">
+          <span class="col-sm-7" style="padding-top: 7px"><%= label_tag('', '2. The passengers are briefed about safety, dos and don’ts before the trip', :class => 'label-tag-style', :style => "text-transform: capitalize;color:black") %></span>
+          <span class="col-sm-2">
+               <%= select_tag("briefed_to_passenger", options_for_select(["YES", "NO", "NA"], ''), :class => 'form-control', :prompt => 'Select Any One', :required => true) %>
+            </span>
+        </div>
+
+
+        <div class="form-group row">
+          <span class="col-sm-7" style="padding-top: 7px"><%= label_tag('', '3. All the passengers are wearing life jackets', :class => 'label-tag-style', :style => "text-transform: capitalize;color:black") %></span>
+          <span class="col-sm-2">
+               <%= select_tag("wearing_life_jackets_all", options_for_select(["YES", "NO", "NA"], ''), :class => 'form-control', :prompt => 'Select Any One', :required => true) %>
+            </span>
+        </div>
+
+
+      </div>
+
+      <div class="col-sm-12"><%= get_index_text('Crew Onboard') %></div>
+
+      <div class="col-sm-12">
+        <table id="POITableFamily" class="table table-bordered text-center">
+          <tr>
+            <td style="font-weight: bold;color: black"></td>
+            <td style="font-weight: bold;color: black">Name</td>
+            <td style="font-weight: bold;color: black">License No</td>
+            <td>
+              <input type="button" id="addmorePOIbutton" value="+" onclick="insRow()"/>
+            </td>
+          </tr>
+          <tr style="text-align: center;">
+            <td class="td_class">1</td>
+            <td class="td_class">
+              <%= text_field_tag "crewName_", '', :placeholder => 'Name', :class => 'form-control', :required => true, :id => "crewName_" %>
+            </td>
+            <td class="td_class">
+              <%= text_field_tag "crewLicense_", '', :placeholder => 'License No', :class => 'form-control', :required => true, :id => "crewLicense_" %>
+            </td>
+            <td class="td_class">
+              <input type="button" id="delPOIbutton" value="X" onclick="deleteRow(this)"/>
+            </td>
+          </tr>
+        </table>
+        <br/>
+      </div>
+
+      <div class="col-sm-12">
+        <span><%= submit_tag "save", :class => 'btn btn-primary btn-md btn-lg btn-block', :style => 'background-color:#007bff;min-height:50px;font-weight:bold;font-size:16px' %></span>
+      </div>
+    </div>
+  <% end %>
+  <br/>
+</div>
+
+
+<script>
+    function insRow() {
+        var x = document.getElementById('POITableFamily');
+        var new_row = x.rows[1].cloneNode(true);
+        var len = x.rows.length;
+        new_row.cells[0].innerHTML = len;
+        var inp1 = new_row.cells[1].getElementsByTagName('input')[0];
+        inp1.id += len;
+        inp1.name += len;
+        inp1.value = '';
+        var inp2 = new_row.cells[2].getElementsByTagName('input')[0];
+        inp2.id += len;
+        inp2.name += len;
+        inp2.value = '';
+        x.appendChild(new_row);
+    }
+
+    function deleteRow(row) {
+        var i = row.parentNode.parentNode.rowIndex;
+        if (i != 1) {
+            document.getElementById('POITableFamily').deleteRow(i);
+        }
+    }
+
+</script>

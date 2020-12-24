@@ -1,0 +1,91 @@
+<table align="center" cellpadding="0" cellspacing="0" width="100%"
+       style="border:1px solid #ccc;background:#fff;">
+  <tr>
+    <td align="center" bgcolor="#fff" style="padding: 10px 0 0px 0;height:35px;color:fff;">
+      <img src="https://api.aptdc.in/email-banner1.jpg" width="80%">
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <table align="center" cellpadding="0" cellspacing="0" width="100%"
+             style="border:1px solid #ccc;margin-top:10px">
+        <tr style="height:25px;">
+          <td style="border-right:1px solid #ccc;border-bottom:1px solid #ccc;text-align:center;"><br>
+            <b style="font-size:18px;"><u>NOC for Registration of Inland Vessels and Boats</u></b><br><br>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding-left:8px;height:35px;">Owner Name : <b><%= @noc_boat_registration.owner_name %></b></td>
+        </tr>
+        <tr>
+          <td style="padding-left:8px;height:35px;">Agency Name : <b><%= @noc_boat_registration.agency_name %></b></b>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding-left:8px;height:35px;">Boat Name : <b><%= @noc_boat_registration.boat_name %></b></td>
+        </tr>
+        <tr>
+          <td style="padding-left:8px;height:35px;">Manufacturing Certificate :
+            <b><%= @noc_boat_registration.manufacturing_certificate_number %></b></td>
+        </tr>
+        <tr>
+          <td style="padding-left:8px;height:35px;">Manufacturing Date :
+            <b><%= @noc_boat_registration.manufacturing_date %></b>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding-left:8px;height:35px;">Boat Type : <b><%= @noc_boat_registration.boat_type %></b></td>
+        </tr>
+        <tr>
+          <td style="padding-left:8px;height:35px;">Engine Type (OBM / IBM):
+            <b><%= @noc_boat_registration.engine_type %></b>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding-left:8px;height:35px;">Proposed Location to use the boat :
+            <b><%= @noc_boat_registration.proposed_location %></b></td>
+        </tr>
+        <tr>
+          <td style="padding-left:8px;height:35px;">Proposed Use : <b><%= @noc_boat_registration.proposed_use %></b>
+          </td>
+        </tr>
+        <tr>
+          <td
+            style="border-right:1px solid #ccc;border-bottom:1px solid #ccc;padding:10px;text-align:center;">
+            <div class="center">
+              <b style="font-size:18px;"><u>To Whomsoever It May Concern</u></b><br><br>
+            </div>
+            <p align="justify">
+              This is to certify that APTDC, Govt, of AP has no objection for registration of the
+              boat name <b><%= @noc_boat_registration.boat_name %></b> boat type
+              <b><%= @noc_boat_registration.boat_type %></b> owned by
+              <b><%= @noc_boat_registration.agency_name %></b> owner name
+              <b><%= @noc_boat_registration.owner_name %></b> bearing manufacturing
+              certificate number
+              <b><%= @noc_boat_registration.manufacturing_certificate_number %></b> and
+              proposed to be used at <b><%= @noc_boat_registration.proposed_location %></b> location, as
+              <b><%= @noc_boat_registration.proposed_use %></b> with
+              the Andhra Pradesh Maritime Board in compliance with orders of the Govt. Vide
+              G.O. Ms. No. 10, I&I Department, dated 17.01.2020.
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td
+            style="border-right:1px solid #ccc;border-bottom:1px solid #ccc;padding-left:8px;padding-top:8px;text-align:left;">
+            <b style="font-size:16px;">NOC Number: <%= @noc_boat_registration.file_no %></b><br><br>
+            <table width="100%">
+              <tr>
+                <td width="50%">
+                  <b style="font-size:14px;">Issue Date : <%= @noc_boat_registration.approved_date.strftime("%d-%m-%Y") %></b><br></td>
+                <td width="50%" style="text-align: right;padding-right: 10px;"><b
+                  style="font-size:14px;">Issuing Authority :
+                  APTDC</b><br></td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>

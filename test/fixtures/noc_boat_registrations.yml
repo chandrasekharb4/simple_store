@@ -1,0 +1,55 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  owner_name: MyString
+  agency_name: MyString
+  owner_email: MyString
+  mobile_number: MyString
+  adress: MyText
+  boat_name: MyString
+  boat_type: MyString
+  engine_type: MyString
+  manufacturing_certificate_number: MyString
+  manufacturing_date: MyString
+  proposed_location: MyString
+  proposed_use: MyString
+  file_no: MyString
+  user_id: 1
+  application_status: MyString
+  applied_date: 2020-12-16
+  expire_date: 2020-12-16
+  approved_date: 2020-12-16
+  paid_amount: MyString
+  tnr_no: MyString
+  aadharCard: MyString
+  manufacturing_certificate: MyString
+  approved_by: 1
+  comment: MyText
+  controll_room_id: 1
+
+two:
+  owner_name: MyString
+  agency_name: MyString
+  owner_email: MyString
+  mobile_number: MyString
+  adress: MyText
+  boat_name: MyString
+  boat_type: MyString
+  engine_type: MyString
+  manufacturing_certificate_number: MyString
+  manufacturing_date: MyString
+  proposed_location: MyString
+  proposed_use: MyString
+  file_no: MyString
+  user_id: 1
+  application_status: MyString
+  applied_date: 2020-12-16
+  expire_date: 2020-12-16
+  approved_date: 2020-12-16
+  paid_amount: MyString
+  tnr_no: MyString
+  aadharCard: MyString
+  manufacturing_certificate: MyString
+  approved_by: 1
+  comment: MyText
+  controll_room_id: 1

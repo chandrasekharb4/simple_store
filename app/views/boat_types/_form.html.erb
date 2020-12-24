@@ -1,0 +1,33 @@
+<%= form_for(@boat_type) do |f| %>
+  <% if @boat_type.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@boat_type.errors.count, "error") %> prohibited this boat_type from being saved:</h2>
+
+      <ul>
+        <% @boat_type.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="form-group">
+        <%= f.label :name, :class => 'label-tag-style', :style => "text-transform: capitalize;color:black" %><br/>
+        <%= f.text_field :name, :class => 'form-control', :placeholder => 'Name ', :required => true %>
+      </div>
+      <div class="field">
+        <%= f.label :code, :class => 'label-tag-style', :style => "text-transform: capitalize;color:black" %><br/>
+        <%= f.text_field :code, :class => 'form-control', :placeholder => 'Code ', :required => true %>
+      </div>
+      <div class="field">
+        <%= f.check_box :active %> &nbsp;&nbsp; <%= f.label :active, :class => 'label-tag-style', :style => "text-transform: capitalize;color:black" %>
+        <br/>
+      </div>
+      <div class="actions">
+        <%= f.submit(:class => 'btn btn-success btn-md', :style => "background-color:#088351") %>
+      </div>
+    </div>
+  </div>
+<% end %>

@@ -1,0 +1,159 @@
+<style>
+  head_box {
+    padding: 10px !important;
+    border-radius: 8px;
+  }
+
+  .head1 {
+    font-size: 20px;
+    padding: 10px;
+    font-weight: bold;
+    text-align: center;
+    color: #045082;
+  }
+
+  .head2 {
+    font-size: 20px;
+    padding: 10px;
+    font-weight: bold;
+    text-align: center;
+    color: #088351;
+
+  }
+
+  .head {
+    font-size: 20px;
+    padding: 10px;
+    font-weight: bold;
+    text-align: center;
+    color: #6c757d;
+  }
+
+  .subHead {
+    font-size: 22px;
+    font-weight: bold;
+    padding: 5px;
+    color: black;
+    text-align: center;
+  }
+</style>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-3">
+      <div class="controlcard head_box">
+        <div class="head1">Total NOC's</div>
+        <div class="subHead"><%= @dashboard_data["AppliedNoc"] %></div>
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <div class="controlcard head_box">
+        <div class="head1">NOC Approved</div>
+        <div class="subHead"><%= @dashboard_data["ApprovedNoc"] %></div>
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <div class="controlcard head_box">
+        <div class="head1">NOC Pending</div>
+        <div class="subHead"><%= @dashboard_data["PendingNoc"] %></div>
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <div class="controlcard head_box">
+        <div class="head1">NOC Rejected</div>
+        <div class="subHead"><%= @dashboard_data["RejectedNoc"] %></div>
+      </div>
+    </div>
+  </div>
+  <br/>
+  <div class="row">
+    <div class="col-sm-3">
+      <div class="controlcard head_box">
+        <div class="head2">Total Permission Order's</div>
+        <div class="subHead"><%= @dashboard_data["AppliedPer"] %></div>
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <div class="controlcard head_box">
+        <div class="head2"> Approved Permission Orders</div>
+        <div class="subHead"><%= @dashboard_data["ApprovedPer"] %></div>
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <div class="controlcard head_box">
+        <div class="head2"> Pending Permission Orders</div>
+        <div class="subHead"><%= @dashboard_data["PendingPer"] %></div>
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <div class="controlcard head_box">
+        <div class="head2"> Rejected Permission Orders</div>
+        <div class="subHead"><%= @dashboard_data["RejectedPer"] %></div>
+      </div>
+    </div>
+  </div>
+  <br/>
+  <div class="row">
+    <div class="col-sm-3">
+      <div class="controlcard head_box">
+        <div class="head">Total Boats</div>
+        <div class="subHead"><%= @dashboard_data["AppliedBoats"] %></div>
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <div class="controlcard head_box">
+        <div class="head">Active Boats</div>
+        <div class="subHead"><%= @dashboard_data["ActiveBoats"] %></div>
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <div class="controlcard head_box">
+        <div class="head">In Active Boats</div>
+        <div class="subHead"><%= @dashboard_data["InactiveBoats"] %></div>
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <div class="controlcard head_box">
+        <div class="head">Runing Boats</div>
+        <div class="subHead"><%= @dashboard_data["RunningBoats"] %></div>
+      </div>
+    </div>
+  </div>
+
+
+  <br/>
+  <br/>
+
+  <table class="table table-bordered">
+    <tr class="tr_style">
+      <th> Trip No</th>
+      <th> Name Of The Vessel</th>
+      <th>Boat Type</th>
+      <th> Navigation Route</th>
+      <th>Route Permission Number</th>
+      <th>Trip Duriation</th>
+      <th>Trip Start Time</th>
+      <th>Passenger Count</th>
+      <th></th>
+
+    </tr>
+    <% @running_trips.each do |trip| %>
+      <tr>
+        <td> <%= trip.trip_no %></td>
+        <td><%= trip.name_of_the_vessel %></td>
+        <td> <%= trip.boat_type %></td>
+        <td> <%= trip.navigation_route %></td>
+        <td> <%= trip.route_permission_number %></td>
+        <td> <%= trip.trip_duriation %></td>
+        <td> <%= trip.start_time.in_time_zone($zone).strftime("%b %d %Y %I:%M:%S %p") %></td>
+        <td> <%= trip.passenger_count %></td>
+        <td>
+          <a href="http://track.tpdirect.in/tpms/dashboardnew/dashBoardLogin?code=GWMC" class="btn btn-xs btn-success" target="_blank"> Tracking </a>
+          <a href="/boats/display_trip_details?boat_id=<%= trip.boat_id %>" target="_blank" class="btn btn-xs btn-link"><i class="fa fa-eye" aria-hidden="true"></i></a>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+
+</div>

@@ -1,0 +1,151 @@
+<%= form_for(@boat) do |f| %>
+  <% if @boat.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@boat.errors.count, "error") %> prohibited this boat from being saved:</h2>
+
+      <ul>
+        <% @boat.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="form-group">
+        <%= f.label :name, :class => 'label-tag-style', :style => "text-transform: capitalize;color:black" %><br/>
+        <%= f.text_field :name, :class => 'form-control', :placeholder => 'Name ', :required => true %>
+      </div>
+      <div class="form-group">
+        <%= f.label :owner_of_the_vessel, :class => 'label-tag-style', :style => "text-transform: capitalize;color:black" %>
+        <br/>
+        <%= f.text_field :owner_of_the_vessel, :class => 'form-control', :placeholder => 'Owner Of The Vesse ', :required => true %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :registration_number, :class => 'label-tag-style', :style => "text-transform: capitalize;color:black" %>
+        <br/>
+        <%= f.text_field :registration_number, :class => 'form-control', :placeholder => 'Registration Number', :required => true %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :captain_name, :class => 'label-tag-style', :style => "text-transform: capitalize;color:black" %>
+        <br/>
+        <%= f.text_field :captain_name, :class => 'form-control', :placeholder => 'Captain Name', :required => true %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :boat_type, :class => 'label-tag-style', :style => "text-transform: capitalize;color:black" %><br/>
+        <%= f.select(:boat_type, options_for_select(BoatType.where('active=?', true).collect {|u| [u.name, u.name]}, @boat.boat_type), {:prompt => 'Select Boat Type'}, :required => "required", :class => 'form-control livesearch',) %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label "life jackets (nos) ", :class => 'label-tag-style', :style => "text-transform: capitalize;color:black" %>
+        <br/>
+        <%= f.number_field :life_jackets, :class => 'form-control', :placeholder => 'life jackets', :required => true %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label "Life Rafts (nos) ", :class => 'label-tag-style', :style => "text-transform: capitalize;color:black" %>
+        <br/>
+        <%= f.number_field :life_rafts, :class => 'form-control', :placeholder => 'Life Rafts', :required => true %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :division_id, :class => 'label-tag-style', :style => "text-transform: capitalize;color:black" %><br/>
+        <%= f.select(:division_id, options_for_select(Division.where('active=?', true).collect {|u| [u.name, u.id]}, @boat.division_id), {:prompt => 'Select Division'}, :required => "required", :class => 'form-control livesearch',) %>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="form-group">
+        <%= f.label :control_room_id, :class => 'label-tag-style', :style => "text-transform: capitalize;color:black" %>
+        <br/>
+        <%= f.select(:control_room_id, options_for_select(ControlPoint.where('active=?', true).collect {|u| [u.name, u.id]}, @boat.control_room_id), {:prompt => 'Select Controll Room'}, :required => "required", :class => 'form-control livesearch',) %>
+      </div>
+      <div class="form-group">
+        <%= f.label :owner_email, :class => 'label-tag-style', :style => "text-transform: capitalize;color:black" %>
+        <%= f.text_field :owner_email, :class => 'form-control', :placeholder => 'Owner Email', :required => true %>
+      </div>
+      <div class="form-group">
+        <%= f.label :navigation_route, :class => 'label-tag-style', :style => "text-transform: capitalize;color:black" %>
+        <%= f.text_field :navigation_route, :class => 'form-control', :placeholder => 'Navigation Route', :required => true %>
+      </div>
+
+
+      <div class="form-group">
+        <%= f.label :captain_license_no, :class => 'label-tag-style', :style => "text-transform: capitalize;color:black" %>
+        <br/>
+        <%= f.text_field :captain_license_no, :class => 'form-control', :placeholder => 'Captain License No', :required => true %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :engine_type, :class => 'label-tag-style', :style => "text-transform: capitalize;color:black" %>
+        <br/>
+        <%= f.select(:engine_type, options_for_select(EngineType.where('active=?', true).collect {|u| [u.name, u.name]}, @boat.engine_type), {:prompt => 'Select Engine Type'}, :required => "required", :class => 'form-control livesearch',) %>
+      </div>
+      <div class="form-group">
+        <%= f.label "Fire extinguishers (nos) ", :class => 'label-tag-style', :style => "text-transform: capitalize;color:black" %>
+        <br/>
+        <%= f.number_field :fire_extinguishers, :class => 'form-control', :placeholder => 'Fire extinguishers ', :required => true %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label "Life Buoys (nos) ", :class => 'label-tag-style', :style => "text-transform: capitalize;color:black" %>
+        <br/>
+        <%= f.number_field :life_buoys, :class => 'form-control', :placeholder => 'Life Buoys', :required => true %>
+      </div>
+      <div class="form-group">
+        <%= f.label :unit_id, :class => 'label-tag-style', :style => "text-transform: capitalize;color:black" %><br/>
+        <%= f.select(:unit_id, options_for_select(Unit.where('active=?', true).collect {|u| [u.name, u.id]}, @boat.unit_id), {:prompt => 'Select Unit'}, :required => "required", :class => 'form-control livesearch',) %>
+      </div>
+
+    </div>
+    <div class="col-sm-4">
+      <div class="form-group">
+        <%= f.label :name_of_the_vessel, :class => 'label-tag-style', :style => "text-transform: capitalize;color:black" %>
+        <br/>
+        <%= f.text_field :name_of_the_vessel, :class => 'form-control', :placeholder => 'Name Of The Vessel ', :required => true %>
+      </div>
+      <div class="form-group">
+        <%= f.label :mobile_no, :class => 'label-tag-style', :style => "text-transform: capitalize;color:black" %>
+        <%= f.text_field :mobile_no, :class => 'form-control', :placeholder => 'Mobile No', :required => true %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :route_permission_number, :class => 'label-tag-style', :style => "text-transform: capitalize;color:black" %>
+        <%= f.text_field :route_permission_number, :class => 'form-control', :placeholder => 'Route Permission Number', :required => true %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :permission_file_no, :class => 'label-tag-style', :style => "text-transform: capitalize;color:black" %>
+        <%= f.text_field :permission_file_no, :class => 'form-control', :placeholder => 'Permission File No', :required => true %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :proposed_use, :class => 'label-tag-style', :style => "text-transform: capitalize;color:black" %>
+        <br/>
+        <%= f.select(:proposed_use, options_for_select(ProposedUse.where('active=?', true).collect {|u| [u.name, u.name]}, @boat.proposed_use), {:prompt => 'Select Proposed Use'}, :required => "required", :class => 'form-control livesearch',) %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label "Boat Capacity (nos) ", :class => 'label-tag-style', :style => "text-transform: capitalize;color:black" %>
+        <br/>
+        <%= f.number_field :passenger_capacity, :class => 'form-control', :placeholder => 'Fire extinguishers ', :required => true %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label "Trip Duriation (Minutes)", :class => 'label-tag-style', :style => "text-transform: capitalize;color:black" %>
+        <br/>
+        <%= f.number_field :trip_duriation, :class => 'form-control', :placeholder => 'Trip Duriation', :required => true %>
+      </div>
+      <%= f.hidden_field :created_by, :value => current_user.id %>
+      <%= f.hidden_field :user_id, :value => current_user.id %>
+
+    </div>
+  </div>
+  <div class="row" style="margin: 0px">
+    <%= f.submit("SUBMIT", :class => 'btn btn-primary btn-md btn-lg btn-block', :style => "background-color:#007bff;min-height:50px;font-weight:bold;font-size:16px") %>
+  </div>
+
+<% end %>

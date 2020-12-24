@@ -1,0 +1,29 @@
+<%= form_for(@system_setting) do |f| %>
+  <% if @system_setting.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@system_setting.errors.count, "error") %> prohibited this system_setting from being saved:</h2>
+
+      <ul>
+        <% @system_setting.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="form-group">
+        <%= f.label :key, :class => 'label-tag-style', :style => "text-transform: capitalize;color:black" %><br/>
+        <%= f.text_field :key, :class => 'form-control', :placeholder => 'key ', :required => true %>
+      </div>
+      <div class="form-group">
+        <%= f.label :value, :class => 'label-tag-style', :style => "text-transform: capitalize;color:black" %><br/>
+        <%= f.text_field :value, :class => 'form-control', :placeholder => 'Value ', :required => true %>
+      </div>
+      <div class="actions">
+        <%= f.submit(:class => 'btn btn-success btn-md', :style => "background-color:#088351") %>
+      </div>
+    </div>
+  </div>
+<% end %>

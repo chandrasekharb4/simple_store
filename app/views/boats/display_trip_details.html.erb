@@ -1,0 +1,177 @@
+<div style="padding: 5px" class="container">
+  <div class="row">
+    <div class="col-sm-6"> <%= get_index_text("Running Trip Details - #{ @trip_clearance.trip_no}") %></div>
+    <div class="col-sm-6 text-right">
+      <a href="/boats/generateclearance?boat_id=<%= @trip_clearance.boat_id %>&trip_id=<%= @trip_clearance.id %>" class="btn btn-success" , style='color:white;background-color:#088351 !important'> Print</a> &nbsp;&nbsp;
+      <%= link_to 'Back', boats_path, :class => 'btn btn-success', :style => 'color:white;background-color:#088351 !important' %></div>
+  </div>
+
+
+  <table class="table table-bordered">
+    <tr>
+      <td>Boat Name : <b><%= Boat.find_by_id(@trip_clearance.boat_id).try(:name) %></b></td>
+      <td>Control Room &nbsp; : <b><%= ControlPoint.find_by_id(@trip_clearance.control_room_id).try(:name) %></b></td>
+      <td>Name Of The Vessel &nbsp; : <b><%= @trip_clearance.name_of_the_vessel %></b></td>
+    </tr>
+    <tr>
+      <td>Owner Of The Vessel &nbsp; : <b><%= @trip_clearance.owner_of_the_vessel %></b></td>
+      <td>Owner Email&nbsp; : <b><%= @trip_clearance.owner_email %></b></td>
+      <td>Owner Email &nbsp; : <b><%= @trip_clearance.mobile_no %></b></td>
+    </tr>
+    <tr>
+      <td>Registration Number &nbsp; : <b><%= @trip_clearance.registration_number %></b></td>
+      <td>Navigation Route&nbsp; : <b><%= @trip_clearance.navigation_route %></b></td>
+      <td>Route Permission Number &nbsp; : <b><%= @trip_clearance.route_permission_number %></b></td>
+    </tr>
+    <tr>
+      <td>Captain Name &nbsp; : <b><%= @trip_clearance.captain_name %></b></td>
+      <td>Captain License No&nbsp; : <b><%= @trip_clearance.captain_license_no %></b></td>
+      <td>Route Permission Number &nbsp; : <b><%= @trip_clearance.route_permission_number %></b></td>
+    </tr>
+    <tr>
+      <td>Life Jackets (Nos) &nbsp; : <b><%= @trip_clearance.life_jackets %></b></td>
+      <td>Fire Extinguishers (Nos) &nbsp; : <b><%= @trip_clearance.fire_extinguishers %></b></td>
+      <td>Boat Capacity (Nos) &nbsp; : <b><%= @trip_clearance.passenger_capacity %></b></td>
+    </tr>
+    <tr>
+      <td>Life Rafts (Nos) &nbsp; : <b><%= @trip_clearance.life_rafts %></b></td>
+      <td>Life Buoys(Nos) &nbsp; : <b><%= @trip_clearance.life_buoys %></b></td>
+      <td>Trip Duriation (Minutes) &nbsp; : <b><%= @trip_clearance.trip_duriation %></b></td>
+    </tr>
+    <tr>
+      <td>Boat Type &nbsp; : <b><%= @trip_clearance.boat_type %></b></td>
+      <td>Engine Type &nbsp; : <b><%= @trip_clearance.engine_type %></b></td>
+      <td>Proposed Use &nbsp; : <b><%= @trip_clearance.proposed_use %></b></td>
+    </tr>
+    <tr>
+      <td>Departure Date &nbsp; : <b><%= @trip_clearance.departure_date %></b></td>
+      <td>Start Time &nbsp; : <b><%= @trip_clearance.start_time %></b></td>
+      <td>End Time &nbsp; : <b><%= @trip_clearance.end_time.present? ? @trip_clearance.end_time : "NA" %></b></td>
+    </tr>
+  </table>
+
+  <br/>
+  <div class="col-sm-12"><%= get_index_text("Vessel and Crew Related Checklist") %></div>
+  <br/>
+  <table class="table table-bordered">
+    <tr>
+      <th>S No</th>
+      <th> Checking Item</th>
+      <th></th>
+    </tr>
+    <tr>
+      <td> 1</td>
+      <td> Vessel is registered with the Andhra Pradesh Maritime Board</td>
+      <td> <%= @trip_clearance.registered_with_aptdc %> </td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Vessel has the requisite route permissions</td>
+      <td> <%= @trip_clearance.has_route_permissions %></td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Vessel prominently displays the capacity of the vessel (passengers,
+        cargo, max payload) (Not Applicable for small vessels)
+      </td>
+      <td> <%= @trip_clearance.has_prominently_displays_the_capacity %></td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>Vessel has adequate lifesaving equipment</td>
+      <td> <%= @trip_clearance.has_lifesaving_equipment %></td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>Vessel has adequate firefighting equipment (Not Applicable for small vessels)</td>
+      <td> <%= @trip_clearance.has_adequate_firefighting_equipment %></td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>Vessel does not have any major damage</td>
+      <td> <%= @trip_clearance.does_not_have_any_major_damage %></td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>Vessel has the names, photographs and details of the crew displayed in the cabin (Not Applicable for small
+        vessels)
+      </td>
+      <td> <%= @trip_clearance.has_crew_displayed %></td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>Boat driver has the requisite license and is registered</td>
+      <td> <%= @trip_clearance.driver_has_the_requisite_license_and_is_registered %></td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>Boat crew have the requisite licenses and are registered</td>
+      <td> <%= @trip_clearance.crew_have_the_requisite_licenses_and_are_registered %></td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>The Boat driver and the crew have their identity cards / badges prominently displayed</td>
+      <td> <%= @trip_clearance.boat_driver_and_the_crew_have_their_identity_cards_badges %></td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td>The crew is fit and healthy (not inebriated) to manoeuvre the vessel</td>
+      <td><%= @trip_clearance.crew_is_fit_and_healthy_not %></td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>The captain and crew are not under the influence of alcohol (Please Tick)</td>
+      <td><%= @trip_clearance.influence_of_alcohol_all %></td>
+    </tr>
+  </table>
+
+  <br/>
+  <div class="col-sm-12"><%= get_index_text("Passenger Related Checklist") %></div>
+  <br/>
+  <table class="table table-bordered">
+    <tr>
+      <th>S No</th>
+      <th> Checking Item</th>
+      <th></th>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>The boat is not overloaded</td>
+      <td><%= @trip_clearance.overloaded %></td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>The passengers are briefed about safety, dos and don’ts before the trip</td>
+      <td><%= @trip_clearance.briefed_to_passenger %></td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>All the passengers are wearing life jackets</td>
+      <td><%= @trip_clearance.wearing_life_jackets_all %></td>
+    </tr>
+
+  </table>
+  <br/>
+  <div class="col-sm-12"><%= get_index_text("Crew Onboard") %></div>
+  <br/>
+
+
+  <table class="table table-bordered">
+    <tr>
+      <th>S No</th>
+      <th> Name</th>
+      <th> License No</th>
+    </tr>
+    <% @trip_drivers.each_with_index do |crew, index| %>
+      <tr>
+        <td><%= index + 1 %></td>
+        <td><%= crew.name %></td>
+        <td><%= crew.license_number %></td>
+      </tr>
+    <% end %>
+  </table>
+
+
+  <br/>
+</div>
+

@@ -1,0 +1,2 @@
+module NocBoatRegistrationsHelper
+end

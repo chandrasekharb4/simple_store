@@ -1,0 +1,27 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  mobile_number: MyString
+  amount: 1.5
+  tnr_no: MyString
+  payment_status: MyString
+  transaction_details: MyText
+  payment_at: MyString
+  email: MyString
+  name: MyString
+  used_file_no: MyString
+  is_used: false
+
+two:
+  user_id: 1
+  mobile_number: MyString
+  amount: 1.5
+  tnr_no: MyString
+  payment_status: MyString
+  transaction_details: MyText
+  payment_at: MyString
+  email: MyString
+  name: MyString
+  used_file_no: MyString
+  is_used: false

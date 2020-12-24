@@ -1,0 +1,61 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  control_room_id: 1
+  name_of_the_vessel: MyString
+  registration_number: MyString
+  owner_of_the_vessel: MyString
+  owner_email: MyString
+  mobile_no: MyString
+  navigation_route: MyString
+  route_permission_number: MyString
+  captain_name: MyString
+  captain_license_no: MyString
+  created_by: 1
+  user_id: MyString
+  life_jackets: 1
+  fire_extinguishers: 1
+  passenger_capacity: 1
+  life_rafts: 1
+  life_buoys: 1
+  trip_duriation: MyString
+  boat_type: MyString
+  engine_type: MyString
+  proposed_use: MyString
+  active: false
+  permission_file_no: MyString
+  status: MyString
+  trip_run: false
+  division_id: 1
+  unit_id: 1
+
+two:
+  name: MyString
+  control_room_id: 1
+  name_of_the_vessel: MyString
+  registration_number: MyString
+  owner_of_the_vessel: MyString
+  owner_email: MyString
+  mobile_no: MyString
+  navigation_route: MyString
+  route_permission_number: MyString
+  captain_name: MyString
+  captain_license_no: MyString
+  created_by: 1
+  user_id: MyString
+  life_jackets: 1
+  fire_extinguishers: 1
+  passenger_capacity: 1
+  life_rafts: 1
+  life_buoys: 1
+  trip_duriation: MyString
+  boat_type: MyString
+  engine_type: MyString
+  proposed_use: MyString
+  active: false
+  permission_file_no: MyString
+  status: MyString
+  trip_run: false
+  division_id: 1
+  unit_id: 1

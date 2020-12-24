@@ -1,0 +1,35 @@
+<table class="table table-bordered">
+  <tr class="tr_style">
+    <th> Trip No</th>
+    <th> Name Of The Vessel</th>
+    <th>Boat Type</th>
+    <th> Navigation Route</th>
+    <th>Route Permission Number</th>
+    <th>Registration Number</th>
+    <th>Trip Duriation</th>
+    <th>Passenger Count</th>
+    <th>Trip Start Time</th>
+    <th>Trip End Time</th>
+    <th></th>
+  </tr>
+
+
+  <% @trip_clearances.each do |trip_clearance| %>
+    <tr>
+      <td><%= trip_clearance.trip_no %></td>
+      <td><%= trip_clearance.name_of_the_vessel %></td>
+      <td><%= trip_clearance.boat_type %></td>
+      <td><%= trip_clearance.navigation_route %></td>
+      <td><%= trip_clearance.route_permission_number %></td>
+      <td><%= trip_clearance.registration_number %></td>
+      <td><%= trip_clearance.trip_duriation %></td>
+      <td><%= trip_clearance.passenger_count %></td>
+      <td><%= trip_clearance.start_time.in_time_zone($zone).strftime("%b %d %Y %I:%M:%S %p") %></td>
+      <td><%= trip_clearance.end_time.present? ? trip_clearance.end_time.in_time_zone($zone).strftime("%b %d %Y %I:%M:%S %p") : "NA" %></td>
+      <td>
+        <a href="/boats/display_trip_details1?boat_id=<%= trip_clearance.boat_id %>&trip_id=<%= trip_clearance.id %>" target="_blank" class="btn btn-xs btn-link"><i class="fa fa-eye" aria-hidden="true"></i></a>
+        <a href="http://track.tpdirect.in/tpms/dashboardnew/dashBoardLogin?code=GWMC" class="btn btn-xs btn-success"> Tracking </a>
+      </td>
+    </tr>
+  <% end %>
+</table>

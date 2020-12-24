@@ -1,0 +1,39 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  mobile_no: MyString
+  email: MyString
+  crypted_password: MyString
+  password_salt: MyString
+  persistence_token: MyString
+  perishable_token: MyString
+  password: MyString
+  password_confirmation: MyString
+  super_admin: false
+  employee: false
+  employee_code: false
+  user_role: MyString
+  control_room_id: 1
+  unit_user: false
+  ho_user: false
+  admin: false
+
+two:
+  name: MyString
+  mobile_no: MyString
+  email: MyString
+  crypted_password: MyString
+  password_salt: MyString
+  persistence_token: MyString
+  perishable_token: MyString
+  password: MyString
+  password_confirmation: MyString
+  super_admin: false
+  employee: false
+  employee_code: false
+  user_role: MyString
+  control_room_id: 1
+  unit_user: false
+  ho_user: false
+  admin: false

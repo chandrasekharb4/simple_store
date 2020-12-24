@@ -1,0 +1,41 @@
+
+<div style="padding: 5px">
+  <div class="row">
+    <div class="col-sm-6"><%= get_index_text('payments') %></div>
+    <div class="col-sm-6 text-right">
+    </div>
+  </div>
+  <table class="table table-bordered">
+    <tr class="tr_style">
+      <th>Name</th>
+    <th>Mobile number</th>
+    <th>Amount</th>
+    <th>Tnr no</th>
+    <th>Payment status</th>
+    <th>Transaction details</th>
+    <th>Payment at</th>
+    <th>Email</th>
+    <th>Used file no</th>
+  </tr>
+
+<% @payments.each do |payment| %>
+  <tr>
+    <td><%= payment.mobile_number %></td>
+    <td><%= payment.amount %></td>
+    <td><%= payment.tnr_no %></td>
+    <td><%= payment.payment_status %></td>
+    <td><%= payment.transaction_details %></td>
+    <td><%= payment.payment_at %></td>
+    <td><%= payment.email %></td>
+    <td><%= payment.name %></td>
+    <td><%= payment.used_file_no %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+</div>
+
+
+

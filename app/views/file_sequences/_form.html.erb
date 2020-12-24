@@ -1,0 +1,29 @@
+<%= form_for(@file_sequence) do |f| %>
+  <% if @file_sequence.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@file_sequence.errors.count, "error") %> prohibited this file_sequence from being saved:</h2>
+
+      <ul>
+        <% @file_sequence.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="form-group">
+        <%= f.label :file_type, :class => 'label-tag-style', :style => "text-transform: capitalize;color:black" %><br/>
+        <%= f.text_field :file_type, :class => 'form-control', :placeholder => 'Name ', :required => true %>
+      </div>
+      <div class="field">
+        <%= f.label :sequence_no, :class => 'label-tag-style', :style => "text-transform: capitalize;color:black" %><br/>
+        <%= f.number_field :sequence_no, :class => 'form-control', :placeholder => 'Code ', :required => true %>
+      </div>
+      <div class="actions">
+        <%= f.submit(:class => 'btn btn-success btn-md', :style => "background-color:#088351") %>
+      </div>
+    </div>
+  </div>
+<% end %>

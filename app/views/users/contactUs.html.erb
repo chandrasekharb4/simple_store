@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Boating Operations Management System - AP Tourism</title>
+  <link href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Custom styles for this template -->
+  <link href="/assets/carousel.css" rel="stylesheet">
+  <link href="/assets/style.css" rel="stylesheet">
+  <link href="/assets/jquerycssmenu.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto:300,400,500,700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="assets/lightbox.min.css">
+</head>
+
+<body>
+<header class="fixed-top  bg-dark" style="padding: 5px 0px;">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8">
+        <a class="navbar-brand" href="/"><img src="/assets/logo.png" style="height:50px;"></a>
+      </div>
+      <div class="col-lg-4">
+
+        <!--<img src="/assets/ap-govt-logo.png" class="invisable-xs" style="height:50px;float:right;display:inline;">
+        <img src="/assets/aptdc-new-logo-sm.png" class="invisable-xs" style="height:50px;display:inline;float:right;margin-right:5px;">-->
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="container" style="margin-top:20px;">
+  <div class="row">
+    <div class="col-md-12 no-gutter">
+      <div class="container" style="border: 1px solid black; border-radius: 17px;padding: 15px">
+        <br/>
+
+
+        <div class="header_div">
+          <p>We appreciate the opportunity to assist you. Whether, for answers to any questions about your up-coming
+            personal trip, assistance with world-class convention/trade centers for your international business
+            conventions
+            and meetings, or for any other support required during your stay in Andhra Pradesh, please contact us at
+            the
+            following addresses.</p>
+          <p>For Online Reservation related queries please mail to
+            <a href="mailto:helpdesk@aptdc.in">helpdesk@aptdc.in</a></p>
+          <p>For any other information write to us at <a href="mailto:info@aptdc.in">info@aptdc.in</a> or contact us
+            at the following tourism offices for any
+            requirement.</p>
+        </div>
+
+
+        <div class="text-center">
+          <br/>
+          <h3 style="margin: 0px;color: #080A40"> Andhra Pradesh Tourism Development Corporation</h3>
+          <h5 style="margin: 0px;;color: #080A40">5th Floor, Stalin Corporate office, Auto Nagar, Industrial Area,
+          Vijayawada.</h5>
+          <br/>
+          <div style="padding: 5px;">
+
+            <div class="text-center" style="background: linear-gradient(180deg, black, #6b6b6b);color: white;padding: 8px 5px">
+              <i class="fa fa-phone" aria-hidden="true"></i> &nbsp;1800-42-545454
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- FOOTER -->
+<footer style="background: #044f81;background: linear-gradient(180deg,#044f81 0,#2c8ec1);padding: 15px 0px;position:fixed;bottom:0;width:100%;">
+  <div class="container">
+    <p class="float-right" style="margin-bottom: 0px;"><a href="#" style="color: #fff;">
+      <i class="fa fa-arrow-up"></i></a></p>
+    <p style="color: #fff;margin-bottom: 0px;">&copy; 2020 Boating Operations Management System.</p>
+  </div>
+</footer>
+
+<!-- Bootstrap core JavaScript
+  ================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="/assets/jquery-3.2.1.slim.min.js"></script>
+<script src="/assets/popper.min.js"></script>
+<script src="/assets/bootstrap.min.js"></script>
+<!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+<script src="/assets/holder.min.js"></script>
+
+<script>
+    let modalId = $('#image-gallery');
+
+    $(document)
+        .ready(function () {
+
+            loadGallery(true, 'a.thumbnail');
+
+            //This function disables buttons when needed
+            function disableButtons(counter_max, counter_current) {
+                $('#show-previous-image, #show-next-image')
+                    .show();
+                if (counter_max === counter_current) {
+                    $('#show-next-image')
+                        .hide();
+                } else if (counter_current === 1) {
+                    $('#show-previous-image')
+                        .hide();
+                }
+            }
+
+            /**
+             *
+             * @param setIDs        Sets IDs when DOM is loaded. If using a PHP counter, set to false.
+             * @param setClickAttr  Sets the attribute for the click handler.
+             */
+
+            function loadGallery(setIDs, setClickAttr) {
+                let current_image,
+                    selector,
+                    counter = 0;
+
+                $('#show-next-image, #show-previous-image')
+                    .click(function () {
+                        if ($(this)
+                            .attr('id') === 'show-previous-image') {
+                            current_image--;
+                        } else {
+                            current_image++;
+                        }
+
+                        selector = $('[data-image-id="' + current_image + '"]');
+                        updateGallery(selector);
+                    });
+
+                function updateGallery(selector) {
+                    let $sel = selector;
+                    current_image = $sel.data('image-id');
+                    $('#image-gallery-title')
+                        .text($sel.data('title'));
+                    $('#image-gallery-image')
+                        .attr('src', $sel.data('image'));
+                    disableButtons(counter, $sel.data('image-id'));
+                }
+
+                if (setIDs == true) {
+                    $('[data-image-id]')
+                        .each(function () {
+                            counter++;
+                            $(this)
+                                .attr('data-image-id', counter);
+                        });
+                }
+                $(setClickAttr)
+                    .on('click', function () {
+                        updateGallery($(this));
+                    });
+            }
+        });
+
+    // build key actions
+    $(document)
+        .keydown(function (e) {
+            switch (e.which) {
+                case 37: // left
+                    if ((modalId.data('bs.modal') || {})._isShown && $('#show-previous-image').is(":visible")) {
+                        $('#show-previous-image')
+                            .click();
+                    }
+                    break;
+
+                case 39: // right
+                    if ((modalId.data('bs.modal') || {})._isShown && $('#show-next-image').is(":visible")) {
+                        $('#show-next-image')
+                            .click();
+                    }
+                    break;
+
+                default:
+                    return; // exit this handler for other keys
+            }
+            e.preventDefault(); // prevent the default action (scroll / move caret)
+        });
+
+</script>
+
+<script>
+    window.onscroll = function () {
+        myFunction()
+    };
+    var header = document.getElementById("myMenu");
+    var sticky = header.offsetTop;
+
+    function myFunction() {
+        if (window.pageYOffset > sticky) {
+            header.classList.add("menusticky");
+        } else {
+            header.classList.remove("menusticky");
+        }
+    }
+</script>
+<script src="/assets/lightbox-plus-jquery.min.js"></script>
+</body>
+
+</html>

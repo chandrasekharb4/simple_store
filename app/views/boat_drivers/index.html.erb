@@ -1,0 +1,27 @@
+<h1>Listing boat_drivers</h1>
+
+<table>
+  <tr>
+    <th>Boat</th>
+    <th>Name</th>
+    <th>License numner</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @boat_drivers.each do |boat_driver| %>
+  <tr>
+    <td><%= boat_driver.boat_id %></td>
+    <td><%= boat_driver.name %></td>
+    <td><%= boat_driver.license_numner %></td>
+    <td><%= link_to 'Show', boat_driver %></td>
+    <td><%= link_to 'Edit', edit_boat_driver_path(boat_driver) %></td>
+    <td><%= link_to 'Destroy', boat_driver, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Boat driver', new_boat_driver_path %>

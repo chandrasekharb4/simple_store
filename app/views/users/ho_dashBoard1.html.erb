@@ -1,0 +1,390 @@
+<style>
+  .head_box{
+    font-size: 15px;
+    font-weight: 400;
+    padding: 2px;
+  }
+  .sub_head_box{
+    font-size: 20px;
+    font-weight: 900;
+    padding: 2px;
+  }
+</style>
+
+
+    <div class="row">
+      <div class="col-md-12">
+
+
+        <div class="row no-gutters5" style="margin-top:20px;">
+          <div class="col-md-6">
+            <div class="row">
+              <% @camp_data.each do |key, value| %>
+              <div class="col-md-4">
+                <div class="controlcard mb-3 widget-content">
+                  <div class="widget-content-wrapper">
+
+                    <div class="widget-content-left">
+                      <div class="widget-heading"><%= @camp_data[key]['Name'] %></div>
+                      <div class="widget-subheading"><%= @camp_data[key]['DisName'] %></div>
+                    </div>
+                    <div class="widget-content-right">
+                      <span class="badge badge-warning badge-strip c-w"><%= @camp_data[key]['RunningVissels'] %></span>
+                      <div class="widget-numbers text-success">
+                        <div class="dropdown">
+                          <i class="fa fa-arrow-circle-down" class="dropdown-toggle" data-toggle="dropdown"
+                             style="font-size: 24px;cursor: pointer;color:#000;"></i>
+                          <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#">Running Boats List - <%= @camp_data[key]['RunningVissels'] %></a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">NOC Approved - <%= @camp_data[key]['ApprovedNoc'] %></a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">NOC Pending - <%= @camp_data[key]['PendingNoc'] %></a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Orders Approved - <%= @camp_data[key]['ApprovedPer'] %></a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Orders Pending - <%= @camp_data[key]['PendingPer'] %></a>
+                            <div class="dropdown-divider"></div>
+                            <!--<div style="width: 100%;text-align:center;padding: 0px 5px;"><button type="button" style="margin: 0 auto;text-align: center;width: 100%;" class="btn btn-sm btn-primary">View</button> </div>-->
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+                <%end %>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="row mt-7">
+              <div class="col-md-4">
+                <div class="card bg-gradient-primary c-w text-center card-shadow-primary mb-2">
+                  <div class="card-body" style="text-align:left;">
+                    <div class="font-weight-normal mb-0 head_box ">Total NOC's</div>
+                    <div class="mb-0 mt-10 sub_head_box"><b><%= @dashboard_data["AppliedNoc"] %></b></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <div class="card bg-gradient-danger c-w text-center card-shadow-primary mb-2">
+                  <div class="card-body" style="text-align:left;">
+                    <div class="font-weight-normal mb-0 head_box ">NOC Approved</div>
+                    <div class="mb-0 mt-10 sub_head_box"><b><%= @dashboard_data["ApprovedNoc"] %></b></div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="card bg-gradient-warning c-w text-center card-shadow-primary mb-2">
+                  <div class="card-body" style="text-align:left;">
+                    <div class="font-weight-normal mb-0 head_box ">NOC Pending</div>
+                    <div class="mb-0 mt-10 sub_head_box"><b><%= @dashboard_data["PendingNoc"] %></b></div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="card bg-gradient-info21 c-w text-center card-shadow-primary mb-2">
+                  <div class="card-body" style="text-align:left;">
+                    <div class="font-weight-normal mb-0 head_box ">Total Orders's </div>
+                    <div class="mb-0 mt-10 sub_head_box"><b><%= @dashboard_data['AppliedPer'] %></b></div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="card bg-gradient-info22 c-w text-center card-shadow-primary mb-2">
+                  <div class="card-body" style="text-align:left;">
+                    <div class="font-weight-normal mb-0 head_box ">Orders Approved</div>
+                    <div class="mb-0 mt-10 sub_head_box"><b><%= @dashboard_data['ApprovedPer'] %></b></div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="card bg-gradient-info23 c-w text-center card-shadow-primary mb-2">
+                  <div class="card-body" style="text-align:left;">
+                    <div class="font-weight-normal mb-0 head_box ">Orders Pending</div>
+                    <div class="mb-0 mt-10 sub_head_box"><b><%= @dashboard_data['PendingPer'] %></b></div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="card bg-gradient-info c-w text-center card-shadow-primary mb-2">
+                  <div class="card-body" style="text-align:left;">
+                    <div class="font-weight-normal mb-0 head_box ">Total Vessels</div>
+                    <div class="mb-0 mt-10 sub_head_box"><b><%= @dashboard_data['AppliedBoats'] %></b></div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="card bg-gradient-info2 c-w text-center card-shadow-primary mb-2">
+                  <div class="card-body" style="text-align:left;">
+                    <div class="font-weight-normal mb-0 head_box ">Total Active Vessels</div>
+                    <div class="mb-0 mt-10 sub_head_box"><b><%= @dashboard_data['ActiveBoats'] %></b></div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="card bg-gradient-info3 c-w text-center card-shadow-primary mb-2">
+                  <div class="card-body" style="text-align:left;">
+                    <div class="font-weight-normal mb-0 head_box "> Totay Running Vessel</div>
+                    <div class="mb-0 mt-10 sub_head_box"><b><%= @dashboard_data['RunningBoats'] %></b></div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+<!--    <div class="row mb-20">-->
+<!--      <div class="col-md-6">-->
+<!--        <div class="card bg-plain">-->
+<!--          <div class="card-body">-->
+
+
+
+<!--          </div>-->
+<!--        </div>-->
+
+<!--      </div>-->
+<!--      <div class="col-md-6">-->
+
+<!--      </div>-->
+<!--    </div>-->
+
+    <div class="card bg-plain">
+      <div class="card-body">
+        <h5>Running Vessels</h5>
+        <table class="table mt-20">
+          <thead>
+          <tr>
+            <th> Trip No</th>
+            <th> Name Of The Vessel</th>
+            <th>Boat Type</th>
+            <th> Navigation Route</th>
+            <th>Route Permission Number</th>
+            <th>Trip Duriation</th>
+            <th>Trip Start Time</th>
+            <th>Passenger Count</th>
+            <th></th>
+          </tr>
+          </thead>
+          <tbody>
+          <%if @running_trips.present? %>
+            <% @running_trips.each do |trip| %>
+              <tr>
+                <td> <%= trip.trip_no %></td>
+                <td><%= trip.name_of_the_vessel %></td>
+                <td> <%= trip.boat_type %></td>
+                <td> <%= trip.navigation_route %></td>
+                <td> <%= trip.route_permission_number %></td>
+                <td> <%= trip.trip_duriation %></td>
+                <td> <%= trip.start_time.in_time_zone($zone).strftime("%b %d %Y %I:%M:%S %p") %></td>
+                <td> <%= trip.passenger_count %></td>
+                <td>
+                  <a href="http://track.tpdirect.in/tpms/dashboardnew/dashBoardLogin?code=GWMC" class="btn btn-xs btn-success" target="_blank"> Tracking </a>
+                  <a href="/boats/display_trip_details?boat_id=<%= trip.boat_id %>" target="_blank" class="btn btn-link btn-sm bg-success c-w"><i class="fa fa-eye" aria-hidden="true"></i> View</a>
+                </td>
+              </tr>
+            <% end %>
+          <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+
+
+
+
+<script>
+    let modalId = $('#image-gallery');
+
+    $(document)
+        .ready(function () {
+
+            loadGallery(true, 'a.thumbnail');
+
+            //This function disables buttons when needed
+            function disableButtons(counter_max, counter_current) {
+                $('#show-previous-image, #show-next-image')
+                    .show();
+                if (counter_max === counter_current) {
+                    $('#show-next-image')
+                        .hide();
+                } else if (counter_current === 1) {
+                    $('#show-previous-image')
+                        .hide();
+                }
+            }
+
+            /**
+             *
+             * @param setIDs        Sets IDs when DOM is loaded. If using a PHP counter, set to false.
+             * @param setClickAttr  Sets the attribute for the click handler.
+             */
+
+            function loadGallery(setIDs, setClickAttr) {
+                let current_image,
+                    selector,
+                    counter = 0;
+
+                $('#show-next-image, #show-previous-image')
+                    .click(function () {
+                        if ($(this)
+                            .attr('id') === 'show-previous-image') {
+                            current_image--;
+                        } else {
+                            current_image++;
+                        }
+
+                        selector = $('[data-image-id="' + current_image + '"]');
+                        updateGallery(selector);
+                    });
+
+                function updateGallery(selector) {
+                    let $sel = selector;
+                    current_image = $sel.data('image-id');
+                    $('#image-gallery-title')
+                        .text($sel.data('title'));
+                    $('#image-gallery-image')
+                        .attr('src', $sel.data('image'));
+                    disableButtons(counter, $sel.data('image-id'));
+                }
+
+                if (setIDs == true) {
+                    $('[data-image-id]')
+                        .each(function () {
+                            counter++;
+                            $(this)
+                                .attr('data-image-id', counter);
+                        });
+                }
+                $(setClickAttr)
+                    .on('click', function () {
+                        updateGallery($(this));
+                    });
+            }
+        });
+
+    // build key actions
+    $(document)
+        .keydown(function (e) {
+            switch (e.which) {
+                case 37: // left
+                    if ((modalId.data('bs.modal') || {})._isShown && $('#show-previous-image').is(":visible")) {
+                        $('#show-previous-image')
+                            .click();
+                    }
+                    break;
+
+                case 39: // right
+                    if ((modalId.data('bs.modal') || {})._isShown && $('#show-next-image').is(":visible")) {
+                        $('#show-next-image')
+                            .click();
+                    }
+                    break;
+
+                default:
+                    return; // exit this handler for other keys
+            }
+            e.preventDefault(); // prevent the default action (scroll / move caret)
+        });
+
+</script>
+
+
+
+<script>
+    (function ($, window, document, undefined) {
+        var pluginName = "jqueryAccordionMenu";
+        var defaults = {
+            speed: 300,
+            showDelay: 0,
+            hideDelay: 0,
+            singleOpen: true,
+            clickEffect: true
+        };
+
+        function Plugin(element, options) {
+            this.element = element;
+            this.settings = $.extend({}, defaults, options);
+            this._defaults = defaults;
+            this._name = pluginName;
+            this.init()
+        };
+        $.extend(Plugin.prototype, {
+            init: function () {
+                this.openSubmenu();
+                this.submenuIndicators();
+                if (defaults.clickEffect) {
+                    this.addClickEffect()
+                }
+            },
+            openSubmenu: function () {
+                $(this.element).children("ul").find("li").bind("click touchstart", function (e) {
+                    e.stopPropagation();
+                    e.preventDefault();
+                    if ($(this).children(".submenu").length > 0) {
+                        if ($(this).children(".submenu").css("display") == "none") {
+                            $(this).children(".submenu").delay(defaults.showDelay).slideDown(defaults.speed);
+                            $(this).children(".submenu").siblings("a").addClass("submenu-indicator-minus");
+                            if (defaults.singleOpen) {
+                                $(this).siblings().children(".submenu").slideUp(defaults.speed);
+                                $(this).siblings().children(".submenu").siblings("a").removeClass("submenu-indicator-minus")
+                            }
+                            return false
+                        } else {
+                            $(this).children(".submenu").delay(defaults.hideDelay).slideUp(defaults.speed)
+                        }
+                        if ($(this).children(".submenu").siblings("a").hasClass("submenu-indicator-minus")) {
+                            $(this).children(".submenu").siblings("a").removeClass("submenu-indicator-minus")
+                        }
+                    }
+                    window.location.href = $(this).children("a").attr("href")
+                })
+            },
+            submenuIndicators: function () {
+                if ($(this.element).find(".submenu").length > 0) {
+                    $(this.element).find(".submenu").siblings("a").append("<span class='submenu-indicator'>+</span>")
+                }
+            },
+            addClickEffect: function () {
+                var ink, d, x, y;
+                $(this.element).find("a").bind("click touchstart", function (e) {
+                    $(".ink").remove();
+                    if ($(this).children(".ink").length === 0) {
+                        $(this).prepend("<span class='ink'></span>")
+                    }
+                    ink = $(this).find(".ink");
+                    ink.removeClass("animate-ink");
+                    if (!ink.height() && !ink.width()) {
+                        d = Math.max($(this).outerWidth(), $(this).outerHeight());
+                        ink.css({
+                            height: d,
+                            width: d
+                        })
+                    }
+                    x = e.pageX - $(this).offset().left - ink.width() / 2;
+                    y = e.pageY - $(this).offset().top - ink.height() / 2;
+                    ink.css({
+                        top: y + 'px',
+                        left: x + 'px'
+                    }).addClass("animate-ink")
+                })
+            }
+        });
+        $.fn[pluginName] = function (options) {
+            this.each(function () {
+                if (!$.data(this, "plugin_" + pluginName)) {
+                    $.data(this, "plugin_" + pluginName, new Plugin(this, options))
+                }
+            });
+            return this
+        }
+    })(jQuery, window, document);
+</script>

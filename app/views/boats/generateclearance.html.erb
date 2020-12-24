@@ -1,0 +1,302 @@
+<div class="container">
+  <div class="row mb-30">
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
+      <div align="right" style="width: 100%;">
+        <button class="btn btn-danger" onclick="printDiv('printMe')"><i class="fa fa-file-pdf-o mr-10"></i>
+          Print
+        </button>
+      </div>
+      <br>
+
+      <div id="printMe" class="usertable">
+        <table align="center" cellpadding="0" cellspacing="0" width="100%"
+               style="border:1px solid #ccc;background:#fff;">
+          <tr>
+            <td align="center" bgcolor="#fff" style="padding: 10px 0 0px 0;height:25px;color:fff;">
+              <img src="https://api.aptdc.in/email-banner1.jpg" width="80%">
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <table align="center" cellpadding="0" cellspacing="0" width="100%"
+                     style="border:1px solid #ccc;margin-top:10px">
+                <tr style="height:25px;">
+                  <td colspan="2" style="border-right:1px solid #ccc;border-bottom:1px solid #ccc;text-align:center;">
+                    <br>
+                    <b style="font-size:18px;"><u> Departure Clearance Certificate </u></b><br><br>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding-left:8px;height:35px;">Control Room Location
+                    :<b><%= ControlPoint.find_by_id(@trip_clearance.control_room_id).try(:name) %></b></td>
+                  <td style="padding-left:8px;height:35px;">Date :<b><%= @trip_clearance.departure_date %></b></td>
+                </tr>
+                <tr>
+                  <td style="padding-left:8px;height:35px;">Name of the vessel
+                    :<b><%= @trip_clearance.name_of_the_vessel %></b></td>
+                  <td style="padding-left:8px;height:35px;">Registration Number
+                    :<b><%= @trip_clearance.registration_number %></b></td>
+                </tr>
+                <tr>
+                  <td colspan="2" style="padding-left:8px;height:35px;">Owner of the vessel
+                    :<b><%= @trip_clearance.owner_of_the_vessel %></b></td>
+                </tr>
+                <tr>
+                  <td style="padding-left:8px;height:35px;">Navigation Route
+                    :<b><%= @trip_clearance.navigation_route %></b></td>
+                  <td style="padding-left:8px;height:35px;">Route Permission Number
+                    :<b><%= @trip_clearance.route_permission_number %></b></td>
+                </tr>
+                <tr>
+                  <td colspan="2" style="padding-left:8px;height:35px;">Captain / Driver / Serang Name
+                    :<b><%= @trip_clearance.captain_name %></b></td>
+                </tr>
+                <tr>
+                  <td colspan="2" style="padding-left:8px;height:35px;">License No
+                    :<b><%= @trip_clearance.captain_license_no %></b></td>
+                </tr>
+                <tr>
+                  <td colspan="2" style="padding-left:8px;height:35px;">
+                    <div class="left">
+                      <b style="font-size:15px;"><u> Crew Onboard </u></b>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="2" style="padding:20px">
+                    <table class="table">
+                      <tr>
+                        <th>S No</th>
+                        <th> Name</th>
+                        <th> License No</th>
+                      </tr>
+                      <% @trip_drivers.each_with_index do |crew, index| %>
+                        <tr>
+                          <td><%= index + 1 %></td>
+                          <td><%= crew.name %></td>
+                          <td><%= crew.license_number %></td>
+                        </tr>
+                      <% end %>
+                    </table>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="2" style="padding-left:8px;height:35px;">
+                    <div class="left">
+                      <b style="font-size:15px;"><u> Life Saving Equipment </u></b>
+                    </div>
+                  </td>
+                </tr>
+
+                <tr style="padding: 10px">
+                  <td style="padding-left:8px;height:35px;">Life Jackets (Nos)
+                    :<b><%= @trip_clearance.life_jackets %></b></td>
+                  <td style="padding-left:8px;height:35px;">Life Buoys (Nos) :<b><%= @trip_clearance.life_buoys %></b>
+                  </td>
+                </tr>
+                <tr style="padding: 10px">
+                  <td style="padding-left:8px;height:35px;">Fire Extinguishers (Nos)
+                    :<b><%= @trip_clearance.fire_extinguishers %></b></td>
+                  <td style="padding-left:8px;height:35px;">Life Rafts (Nos) : <b><%= @trip_clearance.life_rafts %></b>
+                  </td>
+                </tr>
+                <tr style="padding: 10px">
+                  <td style="padding-left:8px;height:35px;">Passenger Capacity of the vessel (Nos)
+                    :<b><%= @trip_clearance.passenger_capacity %></b></td>
+                  <td style="padding-left:8px;height:35px;">No.of passengers onboard(Nos) :
+                    <b><%= @trip_clearance.passenger_count %></b></td>
+                </tr>
+
+                <tr style="padding: 10px">
+                  <td colspan="2" style="padding-left:8px;height:35px;">All the passengers are wearing life jackets
+                    :<b><%= @trip_clearance.wearing_life_jackets_all %></b></td>
+                </tr>
+
+                <tr style="padding: 10px">
+                  <td colspan="2" style="padding-left:8px;height:35px;">The captain and crew are not under the influence
+                    of alcohol :<b><%= @trip_clearance.influence_of_alcohol_all %></b></td>
+                </tr>
+
+                <tr>
+                  <td colspan="2" style="padding-left:8px;height:35px;border-right:1px solid #ccc;border-bottom:1px solid #ccc;padding:10px;text-align:center;">
+
+                    <p align="justify " style="padding: 30px">
+                      I certify that the weather is not adverse and is safe for navigation in the water body. The vessel
+                      named <b><%= @trip_clearance.name_of_the_vessel %></b> is authorized to depart from the control
+                      room at <b><%= ControlPoint.find_by_id(@trip_clearance.control_room_id).try(:name) %></b> to ply
+                      on the route <b><%= @trip_clearance.navigation_route %></b> on date
+                      <b><%= @trip_clearance.departure_date.strftime("%d-%m-%Y") %></b>
+                    </p>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td colspan="2"
+                      style="border-right:1px solid #ccc;border-bottom:1px solid #ccc;padding-left:8px;padding-top:8px;text-align:left;">
+                    <br/><br/>
+                    <table width="100%">
+                      <tr>
+                        <td width="50%">
+                          <b style="font-size:14px;">Manager Name </b><br></td>
+                        <td width="50%" style="text-align: right;padding-right: 10px;"><b
+                          style="font-size:14px;"> Liaison Officer Name</b><br></td>
+                      </tr>
+                    </table>
+                    <br/><br/><br/>
+                    <table width="100%">
+                      <tr>
+                        <td width="50%">
+                          <b style="font-size:14px;">Signature </b><br></td>
+                        <td width="50%" style="text-align: right;padding-right: 10px;"><b
+                          style="font-size:14px;"> Signature </b><br></td>
+                      </tr>
+                    </table>
+                    <br/><br/><br/>
+                    <br/>
+                  </td>
+                </tr>
+                <br/>
+                <tr style="height:25px;">
+                  <td colspan="2" style="text-align:center;padding: 0px 25px">
+                    <br/>
+                    <b style="font-size:18px;"><u> Checklist for Departure Clearance</u></b><br><br>
+                  </td>
+                </tr>
+
+
+                <tr style="height:25px;">
+                  <td colspan="2" style="text-align:center;padding: 25px">
+                    <table class="table table-bordered" style="padding: 30px;text-align: left">
+                      <tr>
+                        <th> S No</th>
+                        <th>Checking Item</th>
+                        <th>Y / N / NA</th>
+                      </tr>
+                      <tr>
+                        <td> 1</td>
+                        <td> Vessel is registered with the Andhra Pradesh Maritime Board</td>
+                        <td> <%= @trip_clearance.registered_with_aptdc %> </td>
+                      </tr>
+                      <tr>
+                        <td>2</td>
+                        <td>Vessel has the requisite route permissions</td>
+                        <td> <%= @trip_clearance.has_route_permissions %></td>
+                      </tr>
+                      <tr>
+                        <td>3</td>
+                        <td>Vessel prominently displays the capacity of the vessel (passengers,
+                          cargo, max payload) (Not Applicable for small vessels)
+                        </td>
+                        <td> <%= @trip_clearance.has_prominently_displays_the_capacity %></td>
+                      </tr>
+                      <tr>
+                        <td>4</td>
+                        <td>Vessel has adequate lifesaving equipment</td>
+                        <td> <%= @trip_clearance.has_lifesaving_equipment %></td>
+                      </tr>
+                      <tr>
+                        <td>5</td>
+                        <td>Vessel has adequate firefighting equipment (Not Applicable for small vessels)</td>
+                        <td> <%= @trip_clearance.has_adequate_firefighting_equipment %></td>
+                      </tr>
+                      <tr>
+                        <td>6</td>
+                        <td>Vessel does not have any major damage</td>
+                        <td> <%= @trip_clearance.does_not_have_any_major_damage %></td>
+                      </tr>
+                      <tr>
+                        <td>7</td>
+                        <td>Vessel has the names, photographs and details of the crew displayed in the cabin (Not
+                          Applicable for small
+                          vessels)
+                        </td>
+                        <td> <%= @trip_clearance.has_crew_displayed %></td>
+                      </tr>
+                      <tr>
+                        <td>8</td>
+                        <td>Boat driver has the requisite license and is registered</td>
+                        <td> <%= @trip_clearance.driver_has_the_requisite_license_and_is_registered %></td>
+                      </tr>
+                      <tr>
+                        <td>9</td>
+                        <td>Boat crew have the requisite licenses and are registered</td>
+                        <td> <%= @trip_clearance.crew_have_the_requisite_licenses_and_are_registered %></td>
+                      </tr>
+                      <tr>
+                        <td>10</td>
+                        <td>The Boat driver and the crew have their identity cards / badges prominently displayed</td>
+                        <td> <%= @trip_clearance.boat_driver_and_the_crew_have_their_identity_cards_badges %></td>
+                      </tr>
+                      <tr>
+                        <td>11</td>
+                        <td>The crew is fit and healthy (not inebriated) to manoeuvre the vessel</td>
+                        <td><%= @trip_clearance.crew_is_fit_and_healthy_not %></td>
+                      </tr>
+                      <tr>
+                        <td>12</td>
+                        <td>The captain and crew are not under the influence of alcohol (Please Tick)</td>
+                        <td><%= @trip_clearance.influence_of_alcohol_all %></td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+
+
+            </td>
+          </tr>
+          <tr style="height:25px;">
+            <td colspan="2" style="padding: 0px 25px">
+              <br>
+              <b style="font-size:14px;">Passenger Related Checklist (to be checked by the control room staff for large
+                vessels and to be adhered to by the boat operator for small vessels)</b><br><br>
+            </td>
+          </tr>
+          <tr style="height:25px;">
+            <td colspan="2" style="text-align:center;;padding: 25px">
+              <table class="table table-bordered" style="padding: 15px;text-align: left">
+
+                <tr>
+                  <td> 13</td>
+                  <td>The boat is not overloaded</td>
+                  <td><%= @trip_clearance.overloaded %></td>
+                </tr>
+                <tr>
+                  <td>14</td>
+                  <td>The passengers are briefed about safety, dos and don’ts before the trip</td>
+                  <td><%= @trip_clearance.briefed_to_passenger %></td>
+                </tr>
+                <tr>
+                  <td>15</td>
+                  <td>All the passengers are wearing life jackets</td>
+                  <td><%= @trip_clearance.wearing_life_jackets_all %></td>
+                </tr>
+
+              </table>
+            </td>
+          </tr>
+        </table>
+
+
+        </td>
+        </tr>
+
+        </table>
+      </div>
+    </div>
+    <div class="col-md-1"></div>
+  </div>
+</div>
+
+
+
+<script>
+    function printDiv(printMe) {
+        var printContents = document.getElementById(printMe).innerHTML;
+        var originalContents = document.body.innerHTML;
+        document.body.innerHTML = printContents;
+        window.print();
+        document.body.innerHTML = originalContents;
+    }
+</script>

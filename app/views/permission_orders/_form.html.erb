@@ -1,0 +1,170 @@
+<%= form_for(@permission_order, multipart: true) do |f| %>
+  <% if @permission_order.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@permission_order.errors.count, "error") %> prohibited this permission_order from being
+        saved:</h2>
+
+      <ul>
+        <% @permission_order.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <div style="padding: 30px 20px;background-color: white !important; ">
+
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="form-group">
+          <%= f.label :control_room_location, :class => 'label-tag-style', :style => "text-transform: capitalize;color:black;font-weight:600;font-size:13px" %>
+          <br/>
+          <%= f.select(:control_room_location, options_for_select(ControlPoint.all.collect {|u| [u.name, u.name]}, @permission_order.control_room_location), {:prompt => 'Select Control Room Location'}, :required => "required", :class => 'form-control livesearch',) %>
+        </div>
+      </div>
+
+      <div class="col-sm-4">
+        <div class="form-group">
+          <%= f.label :name_of_the_vessel, :class => 'label-tag-style', :style => "text-transform: capitalize;color:black;font-weight:600;font-size:13px" %>
+          <br/>
+          <%= f.text_field :name_of_the_vessel, :class => 'form-control', :placeholder => 'Name Of Vessel', :required => true %>
+        </div>
+      </div>
+
+      <div class="col-sm-4">
+        <div class="form-group">
+          <%= f.label :registration_number, :class => 'label-tag-style', :style => "text-transform: capitalize;color:black;font-weight:600;font-size:13px" %>
+          <br/>
+          <%= f.text_field :registration_number, :class => 'form-control', :placeholder => 'Registration Number ', :required => true %>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="form-group">
+          <%= f.label :owner_of_the_vessel, :class => 'label-tag-style', :style => "text-transform: capitalize;color:black;font-weight:600;font-size:13px" %>
+          <br/>
+          <%= f.text_field :owner_of_the_vessel, :class => 'form-control', :placeholder => 'Owner Vessel', :required => true %>
+        </div>
+      </div>
+
+      <div class="col-sm-4">
+        <div class="form-group">
+          <%= f.label :owner_email, :class => 'label-tag-style', :style => "text-transform: capitalize;color:black;font-weight:600;font-size:13px" %>
+          <br/>
+          <%= f.text_field :owner_email, :class => 'form-control', :placeholder => 'Email', :required => true %>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="form-group">
+          <%= f.label :mobile_no, :class => 'label-tag-style', :style => "text-transform: capitalize;color:black;font-weight:600;font-size:13px" %>
+          <br/>
+          <%= f.text_field :mobile_no, :class => 'form-control', :placeholder => 'Mobile No', :required => true %>
+        </div>
+      </div>
+
+    </div>
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="form-group">
+          <%= f.label :navigation_route, :class => 'label-tag-style', :style => "text-transform: capitalize;color:black;font-weight:600;font-size:13px" %>
+          <br/>
+          <%= f.text_field :navigation_route, :class => 'form-control', :placeholder => 'Navigation Route', :required => true %>
+        </div>
+      </div>
+
+      <div class="col-sm-4">
+        <div class="form-group">
+          <%= f.label :route_permission_number, :class => 'label-tag-style', :style => "text-transform: capitalize;color:black;font-weight:600;font-size:13px" %>
+          <br/>
+          <%= f.text_field :route_permission_number, :class => 'form-control', :placeholder => 'Route Permission Number', :required => true %>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="form-group">
+          <%= f.label :passenger_capacity, :class => 'label-tag-style', :style => "text-transform: capitalize;color:black;font-weight:600;font-size:13px" %>
+          <br/>
+          <%= f.number_field :passenger_capacity, :class => 'form-control', :placeholder => 'Boat Capacity', :required => true %>
+        </div>
+      </div>
+
+    </div>
+    <div class="row">
+
+      <div class="col-sm-4">
+        <div class="form-group">
+          <%= f.label :captain_name, :class => 'label-tag-style', :style => "text-transform: capitalize;color:black;font-weight:600;font-size:13px" %>
+          <br/>
+          <%= f.text_field :captain_name, :class => 'form-control', :placeholder => 'captain_name', :required => true %>
+        </div>
+      </div>
+
+      <div class="col-sm-4">
+        <div class="form-group">
+          <%= f.label :captain_license_no, :class => 'label-tag-style', :style => "text-transform: capitalize;color:black;font-weight:600;font-size:13px" %>
+          <br/>
+          <%= f.text_field :captain_license_no, :class => 'form-control', :placeholder => 'Captain License No', :required => true %>
+        </div>
+      </div>
+
+      <div class="col-sm-4">
+
+      </div>
+
+
+    </div>
+  </div>
+
+  <div style="background-image: linear-gradient(141deg, #044f81 0%, #1fc8db 51%, #044f81 75%);padding: 10px;text-align: left;font-weight: bold;font-size: 14px;color: white">Documents</div>
+  <br/>
+
+  <div style="padding: 10px 20px;background-color: white !important; ">
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <%= f.label :license_registration_certificate, :class => 'label-tag-style', :style => "text-transform: capitalize;color:black;font-weight:600;font-size:13px" %>
+          <br/>
+          <%= f.file_field :license_registration_certificate, :accept => ".pdf", :required => true %>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="form-group">
+          <%= f.label :routes_permisiion, :class => 'label-tag-style', :style => "text-transform: capitalize;color:black;font-weight:600;font-size:13px" %>
+          <br/>
+          <%= f.file_field :routes_permisiion, :accept => ".pdf", :required => true %>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <%= f.label :captain_license, :class => 'label-tag-style', :style => "text-transform: capitalize;color:black;font-weight:600;font-size:13px" %>
+          <br/>
+          <%= f.file_field :captain_license, :accept => ".pdf", :required => true %>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="form-group">
+          <%= f.label :noc_certificate, :class => 'label-tag-style', :style => "text-transform: capitalize;color:black;font-weight:600;font-size:13px" %>
+          <br/>
+          <%= f.file_field :noc_certificate, :accept => ".pdf", :required => true %>
+        </div>
+      </div>
+    </div>
+
+    <%= f.hidden_field :user_id, :value => current_user.id %>
+    <%= f.hidden_field :appllied_date, :value => Date.today %>
+    <%= f.hidden_field :application_status, :value => "Created" %>
+
+    <br/>
+
+    <div class="row">
+      <%= f.submit("SUBMIT", :class => 'btn btn-primary btn-md btn-lg btn-block', :style => "background-color:#007bff;min-height:50px;font-weight:bold;font-size:16px") %>
+    </div>
+
+  </div>
+<% end %>

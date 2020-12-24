@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Boat:</b>
+  <%= @boat_driver.boat_id %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%= @boat_driver.name %>
+</p>
+
+<p>
+  <b>License numner:</b>
+  <%= @boat_driver.license_numner %>
+</p>
+
+
+<%= link_to 'Edit', edit_boat_driver_path(@boat_driver) %> |
+<%= link_to 'Back', boat_drivers_path %>

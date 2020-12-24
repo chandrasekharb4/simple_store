@@ -1,0 +1,2 @@
+module ProposedUsesHelper
+end

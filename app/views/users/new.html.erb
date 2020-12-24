@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <title>Boating Operations Management System - AP Tourism</title>
+  <link href="/assets/bootstrap.min.css" rel="stylesheet">
+  <!-- Custom styles for this template -->
+  <link href="/assets/carousel.css" rel="stylesheet">
+  <link href="/assets/style.css" rel="stylesheet">
+  <link href="/assets/jquerycssmenu.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto:300,400,500,700&display=swap"
+        rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+<main role="main" style="margin-top:28px;margin-bottom:80px;">
+  <div class="container">
+  </div>
+  <div class="container marketing" style="margin-top: 40px;">
+    <div class="row">
+      <div class="col-md-4"></div>
+      <div class="col-md-4">
+        <%= form_for(@user, {class: 'form-signin', }) do |form| %>
+          <a href="/"> <img class="mb-4" src="/assets/logo-black.png" alt="" height="45"></a>
+          <h1 class="h3 mb-3 font-weight-normal">Please sign</h1>
+          <label for="inputEmail" class="sr-only">Email address</label>
+          <%= form.text_field :email, :class => 'form-control', :placeholder => 'Email ', :required => true %>
+          <label for="inputmobile" class="sr-only">Mobile Number</label>
+          <%= form.text_field :mobile_no, :class => 'form-control', :placeholder => 'Contact Number ', :required => true %>
+          <label for="inputPassword" class="sr-only">Password</label>
+          <%= form.password_field :password, :placeholder => 'Password', :required => true, :class => 'form-control' %>
+          <label for="inputPassword" class="sr-only">Password confirmation</label>
+          <%= form.password_field :password_confirmation, :placeholder => 'Password', :required => true, :class => 'form-control' %>
+          <div class="checkbox mb-3">
+            <label style="padding-left: 5px">Already have an account? <a href="/login">Login</a> </label>
+          </div>
+          <button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
+          <p class="mt-5 mb-3 text-muted">© 2020 Boating Operations Management System.</p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- FOOTER -->
+
+<script src="/assets/jquery-3.2.1.slim.min.js"></script>
+<script src="/assets/popper.min.js"></script>
+<script src="/assets/bootstrap.min.js"></script>
+<script src="/assets/holder.min.js"></script>
+</body>
+
+</html>
+
+
+

@@ -1,0 +1,23 @@
+<div style="padding: 5px">
+  <div class="row">
+    <div class="col-sm-6"><%= get_index_text('File Sequences') %></div>
+    <div class="col-sm-6 text-right"><%= link_to 'New File sequence', new_file_sequence_path, :class => 'btn btn-success', :style => 'color:white;background-color:#088351 !important' %></div>
+  </div>
+  <table class="table table-bordered">
+    <tr class="tr_style">
+      <th>File type</th>
+      <th>Sequence no</th>
+      <th></th>
+      <th></th>
+    </tr>
+    <% @file_sequences.each do |file_sequence| %>
+      <tr>
+        <td><%= file_sequence.file_type %></td>
+        <td><%= file_sequence.sequence_no %></td>
+        <td><%= link_to 'Edit', edit_file_sequence_path(file_sequence) %></td>
+        <td><%= link_to 'Destroy', file_sequence, method: :delete, data: {confirm: 'Are you sure?'} %></td>
+      </tr>
+    <% end %>
+  </table>
+  <br/>
+</div>

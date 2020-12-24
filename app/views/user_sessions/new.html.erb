@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <title>Boating Operations Management System - AP Tourism</title>
+  <link href="assets/bootstrap.min.css" rel="stylesheet">
+  <link href="/assets/carousel.css" rel="stylesheet">
+  <link href="/assets/style.css" rel="stylesheet">
+  <link href="/assets/jquerycssmenu.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto:300,400,500,700&display=swap"rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+<main role="main" style="margin-top:28px;margin-bottom:80px;">
+  <div class="container">
+  </div>
+  <div class="container marketing" style="margin-top: 40px;">
+    <div class="row">
+      <div class="col-md-4"></div>
+      <div class="col-md-4">
+        <%= form_for(@user_session, {:class => 'form-signin'}) do |form| %>
+          <p style="color: darkgreen;font-size: 14px" id="notice"><%= notice %></p>
+          <% user_name_error = @user_session.errors[:username][0] %>
+          <% password_error = @user_session.errors[:password][0] %>
+          <% error = @user_session.errors.full_messages[0] if (user_name_error.blank? && password_error.blank?) %>
+
+          <a href="/"><img class="mb-4" src="assets/logo-black.png" alt="" height="45"></a>
+          <p class="h3 mb-3" style="color: red;font-size: 14px">
+            <%= "Email " + user_name_error unless user_name_error.blank? %>
+            <%= "Password " + password_error unless password_error.blank? %>
+            <%= error.gsub('Email', 'User Name') if error.present? %>
+          </p>
+          <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+          <label for="inputEmail" class="sr-only">Email address</label>
+          <%= form.text_field :email, :placeholder => 'User Name', :class => 'textbox form-control', :required => true %>
+          <label for="inputPassword" class="sr-only">Password</label>
+          <%= form.password_field :password, :placeholder => 'password', :class => 'textbox form-control', :required => true %>
+          <div class="checkbox mb-3" style="padding: 5px 0px 5px 0px">
+            <label style="padding-left: 10px"><!--Don't have an account ? <a href="/users/new">Register Here</a>--> </label>
+          </div>
+          <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+          <p class="mt-5 mb-3 text-muted">© 2020 Boating Operations Management System.</p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</main>
+
+<script src="/assets/jquery-3.2.1.slim.min.js"></script>
+<script src="/assets/popper.min.js"></script>
+<script src="/assets/bootstrap.min.js"></script>
+<script src="/assets/holder.min.js"></script>
+
+
+</body>
+
+</html>
+
+
